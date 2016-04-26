@@ -19,7 +19,7 @@ public class Snake : MonoBehaviour
 
     State currentState;
 
-    bool isChoosen = false;
+    bool isChosen;
 
     void Start ()
     {
@@ -32,12 +32,50 @@ public class Snake : MonoBehaviour
 	
 	void Update ()
     {
-	
-	}
+        if (!isChosen)
+        {
+            if (currentState == State.up || currentState == State.down)
+            {
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    setState(State.right);
+                    isChosen = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    setState(State.left);
+                    isChosen = true;
+                }
+            }
+
+            if (currentState == State.left || currentState == State.right)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    setState(State.up);
+                    isChosen = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    setState(State.down);
+                    isChosen = true;
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            spawnTime /= 3;
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            spawnTime *= 3;
+        }
+    }
 
     void MoveSnake()
     {
-        isChoosen = false;
+        isChosen = false;
         prevPos = transform.position;
         prevRot = transform.rotation;
         nextPos = transform.position += moveFwd;
