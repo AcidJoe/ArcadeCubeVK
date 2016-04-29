@@ -35,7 +35,7 @@ public class ArkanoidBall : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !isActivate)
         {
             isActivate = true;
-            rb.velocity = Vector2.up * speed;
+            rb.velocity = (Vector2.up - (-Vector2.right/3)).normalized * speed;
         }
     }
 
