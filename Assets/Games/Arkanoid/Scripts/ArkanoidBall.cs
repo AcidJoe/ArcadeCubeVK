@@ -17,6 +17,7 @@ public class ArkanoidBall : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pos = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
 
         isActivate = false;
     }
@@ -26,7 +27,7 @@ public class ArkanoidBall : MonoBehaviour
         if (!isActivate && player != null)
         {
             pos.x = player.transform.position.x;
-            pos.y = player.transform.position.y + 13.0f;
+            pos.y = player.transform.position.y + 0.8f;
 
             transform.position = pos;
         }
