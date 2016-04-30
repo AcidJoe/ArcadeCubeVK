@@ -5,7 +5,7 @@ public class PongAI : MonoBehaviour
 {
     public GameObject Ball;
     private Transform CurrentTransform;
-    public int speed;
+    public float speed;
 
     public Rigidbody2D rb;
 
@@ -27,20 +27,34 @@ public class PongAI : MonoBehaviour
     void FixedUpdate()
     {
         CurrentTransform = transform;
+        float step = 0.2f;
+
         if (Ball)
         {
+            float dist = Mathf.Abs(Ball.transform.position.y - CurrentTransform.position.y);
+
             if (CurrentTransform.position.x < Ball.transform.position.x)
             {
-                if (CurrentTransform.position.y < Ball.transform.position.y)
+                if(dist < 0.4)
                 {
-                    rb.velocity = new Vector2(0, 1) * speed;
+                    speed *= dist;
                 }
-                else if (CurrentTransform.position.y > Ball.transform.position.y)
+                else
                 {
-                    rb.velocity = new Vector2(0, -1) * speed;
+                    speed = 20.0f;
                 }
-                else {
-                    rb.velocity = new Vector2(0, 0) * speed;
+
+                if (CurrentTransform.position.y < Ball.transform.position.y && dist > step)
+                {
+                    rb.velocity = Vector2.up * speed;
+                }
+                else if (CurrentTransform.position.y > Ball.transform.position.y && dist > step)
+                {
+                    rb.velocity = Vector2.down * speed;
+                }
+                else if (dist< step)
+                {
+                    rb.velocity = Vector2.zero * speed;
                 }
             }
         }
