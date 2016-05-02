@@ -10,6 +10,7 @@ public class PongManager : MonoBehaviour
 
 	void Start ()
     {
+        dir = 0;
         default_speed = 20.0f;
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<PongBall>();
         StartCoroutine(startGame());
@@ -41,14 +42,7 @@ public class PongManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        StartGame();
-    }
-
-    void StartGame()
-    {
-        ball.transform.position = Vector2.zero;
-        ball.speed = default_speed;
-        ball.rb.velocity = new Vector2(randDir(), 0) * ball.speed;
+        goalSettings();
     }
 
     int randDir()
@@ -58,7 +52,6 @@ public class PongManager : MonoBehaviour
         {
             i = Random.Range(-1, 1);
         }
-        dir = i;
         return i;
     }
 
@@ -71,6 +64,9 @@ public class PongManager : MonoBehaviour
 
     void goalSettings()
     {
+        if (dir == 0)
+            dir = randDir();
+
         ball.transform.position = Vector2.zero;
         ball.rb.velocity = Vector2.zero;
         ball.speed = default_speed;
