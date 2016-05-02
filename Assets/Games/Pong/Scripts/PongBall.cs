@@ -3,14 +3,13 @@ using System.Collections;
 
 public class PongBall : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     public float speed;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.right * speed;
     }
 
     void Update()
@@ -45,6 +44,7 @@ public class PongBall : MonoBehaviour
 
             // Set Velocity with dir * speed
             rb.velocity = dir * speed;
+            speed += 0.5f;
         }
 
         if (col.gameObject.tag == "AI")
@@ -59,6 +59,7 @@ public class PongBall : MonoBehaviour
 
             // Set Velocity with dir * speed
             rb.velocity = dir * speed;
+            speed += 0.5f;
         }
     }
 }

@@ -6,11 +6,14 @@ public class PongAI : MonoBehaviour
     public GameObject Ball;
     private Transform CurrentTransform;
     public float speed;
+    public float default_speed;
 
     public Rigidbody2D rb;
 
     void Start()
     {
+        default_speed = 10;
+        speed = default_speed;
         rb = GetComponent<Rigidbody2D>();
         CurrentTransform = transform;
     }
@@ -41,7 +44,7 @@ public class PongAI : MonoBehaviour
                 }
                 else
                 {
-                    speed = 20.0f;
+                    speed = default_speed;
                 }
 
                 if (CurrentTransform.position.y < Ball.transform.position.y && dist > step)
