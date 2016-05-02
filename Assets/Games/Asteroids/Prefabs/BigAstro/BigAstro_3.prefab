@@ -25,6 +25,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 437364}
   - 212: {fileID: 21243334}
+  - 114: {fileID: 11459152}
+  - 50: {fileID: 5055322}
+  - 60: {fileID: 6088700}
+  - 114: {fileID: 11446802}
   m_Layer: 0
   m_Name: BigAstro_3
   m_TagString: Untagged
@@ -57,6 +61,109 @@ Transform:
   m_Children: []
   m_Father: {fileID: 437364}
   m_RootOrder: 0
+--- !u!50 &5055322
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195136}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &6088700
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195136}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 3.8125, y: -2.09375}
+      - {x: 3.90625, y: -1.03125}
+      - {x: 3.90625, y: -0.5}
+      - {x: 3.6875, y: -0.15625}
+      - {x: 3.3125, y: 0.34375}
+      - {x: 3.34375, y: 0.46875}
+      - {x: 3.21875, y: 0.96875}
+      - {x: 3.84375, y: 1.625}
+      - {x: 3.8125, y: 1.8125}
+      - {x: 3.40625, y: 2.96875}
+      - {x: 3.25, y: 3.09375}
+      - {x: 3.09375, y: 3.15625}
+      - {x: 1.9375, y: 3.5625}
+      - {x: 1.71875, y: 3.59375}
+      - {x: 1.5, y: 3.59375}
+      - {x: 0.75, y: 3.21875}
+      - {x: -0.125, y: 3.65625}
+      - {x: -2.59375, y: 3.65625}
+      - {x: -2.6875, y: 3.5625}
+      - {x: -3.40625, y: 2.4375}
+      - {x: -3.625, y: 2.09375}
+      - {x: -3.625, y: 1.9375}
+      - {x: -3.5, y: 1.6875}
+      - {x: -3.40625, y: 1.4375}
+      - {x: -3.40625, y: 0.3125}
+      - {x: -3.4375, y: 0.3125}
+      - {x: -3.5625, y: 0.03125}
+      - {x: -3.6875, y: -0.46875}
+      - {x: -3.6875, y: -1.46875}
+      - {x: -3.5, y: -2.03125}
+      - {x: -3.34375, y: -2.21875}
+      - {x: -2.5, y: -2.65625}
+      - {x: -1.875, y: -2.625}
+      - {x: -1.34375, y: -2.625}
+      - {x: -0.96875, y: -2.65625}
+      - {x: -0.53125, y: -3.0625}
+      - {x: 0, y: -3.40625}
+      - {x: 0.3125, y: -3.46875}
+      - {x: 0.96875, y: -3.59375}
+      - {x: 1.3125, y: -3.59375}
+      - {x: 1.84375, y: -3.46875}
+      - {x: 2.53125, y: -3.25}
+      - {x: 2.75, y: -3.125}
+--- !u!114 &11446802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804c5c74a748673488e35ab4c0a79e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advancedWrapping: 0
+--- !u!114 &11459152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22144636cc8899848952493bef9876b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerShip: {fileID: 0}
+  player: {fileID: 0}
+  astermid1: {fileID: 132664, guid: 9e53796e6b1e0434386cd0850d6b94a0, type: 2}
+  astermid2: {fileID: 147278, guid: ecb72c15effda594f93da51a5aee156c, type: 2}
+  astermid3: {fileID: 158974, guid: 466ac66262d50f848bc1cfd1d8951eb5, type: 2}
+  astermid4: {fileID: 160010, guid: dec3a472bff4fff4cb4a125597c5cbeb, type: 2}
 --- !u!212 &21240762
 SpriteRenderer:
   m_ObjectHideFlags: 1
