@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ball: {fileID: 0}
   speed: 20
+  default_speed: 0
   rb: {fileID: 0}
 --- !u!1001 &49934199
 Prefab:
@@ -399,6 +400,45 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -2.1069813}
   serializedVersion: 2
   m_Size: {x: 1, y: 5.2139664}
+--- !u!1 &1476226979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1476226980}
+  - 114: {fileID: 1476226981}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1476226980
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476226979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1954405204}
+  m_RootOrder: 0
+--- !u!114 &1476226981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476226979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d59a7b4f6d55fc4e8bfa6bb02306872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1496653840
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +544,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   speed: 20
+--- !u!1 &1954405203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1954405204}
+  m_Layer: 0
+  m_Name: _Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954405204
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954405203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22751828, y: 0.25133914, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1476226980}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &2014243527
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253d286dac1bbf94c95fdbf37888b39e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   speed: 20
 --- !u!50 &2014243532
 Rigidbody2D:
