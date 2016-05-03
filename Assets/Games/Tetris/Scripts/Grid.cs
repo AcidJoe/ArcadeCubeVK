@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Grid : MonoBehaviour
 {
-    public static int w = 10;
+    public static int w = 11;
     public static int h = 25;
     public static Transform[,] grid = new Transform[w, h];
 
