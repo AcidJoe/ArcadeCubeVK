@@ -5,8 +5,13 @@ public class Group : MonoBehaviour
 {
     float lastFall = 0;
 
+    bool leftReady;
+    bool RightReady;
+
     void Start()
     {
+        leftReady = true;
+        RightReady = true;
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
@@ -18,37 +23,43 @@ public class Group : MonoBehaviour
     void Update()
     {
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && leftReady)
         {
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+                StartCoroutine(leftMove());
+            }
             else
                 // It's not valid. revert.
                 transform.position += new Vector3(1, 0, 0);
         }
 
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && RightReady)
         {
             // Modify position
             transform.position += new Vector3(1, 0, 0);
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+                StartCoroutine(rightMove());
+            }
             else
                 // It's not valid. revert.
                 transform.position += new Vector3(-1, 0, 0);
         }
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && !name.Contains("OShape"))
         {
             transform.Rotate(0, 0, -90);
 
@@ -153,5 +164,19 @@ public class Group : MonoBehaviour
             Vector2 v = Grid.roundVec2(child.position);
             Grid.grid[(int)v.x, (int)v.y] = child;
         }
+    }
+
+    IEnumerator leftMove()
+    {
+        leftReady = false;
+        yield return new WaitForSeconds(0.2f);
+        leftReady = true;
+    }
+
+    IEnumerator rightMove()
+    {
+        RightReady = false;
+        yield return new WaitForSeconds(0.2f);
+        RightReady = true;
     }
 }
