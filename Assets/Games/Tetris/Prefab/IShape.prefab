@@ -72,6 +72,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419448}
+  - 114: {fileID: 11486798}
   m_Layer: 0
   m_Name: IShape
   m_TagString: Untagged
@@ -143,6 +144,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419448}
   m_RootOrder: 0
+--- !u!114 &11486798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bec69dacf90ca4fbb9a1c20d8b5d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21226520
 SpriteRenderer:
   m_ObjectHideFlags: 1
