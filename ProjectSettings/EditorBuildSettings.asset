@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Menues/TestMenu/Scenes/TestMenu.unity
+  - enabled: 1
+    path: Assets/Games/Arkanoid/Scenes/ArkanoidGame.unity
+  - enabled: 1
+    path: Assets/Games/Asteroids/Scenes/AsteroidsGame.unity
+  - enabled: 1
+    path: Assets/Games/Pong/Scenes/PongGame.unity
+  - enabled: 1
+    path: Assets/Games/Snake/Scenes/SnakeGame.unity
+  - enabled: 1
+    path: Assets/Games/Tetris/Scenes/TetrisGame.unity
