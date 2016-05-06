@@ -13,6 +13,7 @@ GameObject:
   - 60: {fileID: 6063066}
   - 114: {fileID: 11469766}
   - 114: {fileID: 11499350}
+  - 114: {fileID: 11406030}
   m_Layer: 0
   m_Name: Ship_Asteroids
   m_TagString: Untagged
@@ -101,6 +102,17 @@ PolygonCollider2D:
       - {x: 0, y: 0.1875}
       - {x: -0.03125, y: 0.15625}
       - {x: 0.1875, y: -0.25}
+--- !u!114 &11406030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469766
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -29,6 +29,7 @@ GameObject:
   - 50: {fileID: 5098474}
   - 60: {fileID: 6067042}
   - 114: {fileID: 11470144}
+  - 114: {fileID: 11409534}
   m_Layer: 0
   m_Name: SmallAstro_2
   m_TagString: Untagged
@@ -134,6 +135,17 @@ PolygonCollider2D:
       - {x: 2.09375, y: -3.78125}
       - {x: 2.25, y: -3.3125}
       - {x: 2.625, y: -3.125}
+--- !u!114 &11409534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11431872
 MonoBehaviour:
   m_ObjectHideFlags: 1

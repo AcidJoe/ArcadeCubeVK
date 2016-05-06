@@ -29,6 +29,7 @@ GameObject:
   - 50: {fileID: 5055322}
   - 60: {fileID: 6088700}
   - 114: {fileID: 11446802}
+  - 114: {fileID: 11477338}
   m_Layer: 0
   m_Name: BigAstro_3
   m_TagString: Untagged
@@ -164,6 +165,17 @@ MonoBehaviour:
   astermid2: {fileID: 147278, guid: ecb72c15effda594f93da51a5aee156c, type: 2}
   astermid3: {fileID: 158974, guid: 466ac66262d50f848bc1cfd1d8951eb5, type: 2}
   astermid4: {fileID: 160010, guid: dec3a472bff4fff4cb4a125597c5cbeb, type: 2}
+--- !u!114 &11477338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21240762
 SpriteRenderer:
   m_ObjectHideFlags: 1

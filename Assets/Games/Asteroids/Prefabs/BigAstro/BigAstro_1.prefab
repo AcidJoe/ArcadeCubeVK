@@ -29,6 +29,7 @@ GameObject:
   - 50: {fileID: 5082820}
   - 60: {fileID: 6016804}
   - 114: {fileID: 11491056}
+  - 114: {fileID: 11436386}
   m_Layer: 0
   m_Name: BigAstro_1
   m_TagString: Untagged
@@ -137,6 +138,17 @@ PolygonCollider2D:
       - {x: 2.71875, y: -3.53125}
       - {x: 2.90625, y: -3.5}
       - {x: 3, y: -3.40625}
+--- !u!114 &11436386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11486020
 MonoBehaviour:
   m_ObjectHideFlags: 1

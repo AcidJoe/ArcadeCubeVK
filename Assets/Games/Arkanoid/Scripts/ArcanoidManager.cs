@@ -4,12 +4,12 @@ using System.Collections;
 public class ArcanoidManager : MonoBehaviour
 {
     ArkanoidBall ball;
-    Bat player;
+    //Bat player;
 
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<ArkanoidBall>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Bat>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Bat>();
     }
 
     void Update()
