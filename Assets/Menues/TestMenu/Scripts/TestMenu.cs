@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TestMenu : MonoBehaviour
 {
     public GameObject gamePanel;
     public GameObject diffPanel;
+    public Text version;
 
     int gameID;
     int diffID;
 
     void Start ()
     {
+        version.text = GameInfo.currentVersion;
         gameID = 0;
         diffID = 0;
 
