@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450528}
   - 212: {fileID: 21206980}
+  - 114: {fileID: 11468212}
   m_Layer: 0
   m_Name: OneHitDetector
   m_TagString: Untagged
@@ -87,6 +88,17 @@ MonoBehaviour:
   hitsToKill: 2
   points: 0
   oneHitDetector: {fileID: 161956}
+--- !u!114 &11468212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21206980
 SpriteRenderer:
   m_ObjectHideFlags: 1
