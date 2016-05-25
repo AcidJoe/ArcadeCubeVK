@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ArcanoidManager : MonoBehaviour
 {
+    public int lives;
+    public int score = 0;
+
     ArkanoidBall ball;
     //Bat player;
 
