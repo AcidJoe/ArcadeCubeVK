@@ -999,6 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 157906, guid: fbf858304e7025b4faebdd706ea671c7, type: 2}
+  weekBrick: {fileID: 154442, guid: e33608c45a048484d93d2c1333c9cfcc, type: 2}
 --- !u!114 &1446910296
 MonoBehaviour:
   m_ObjectHideFlags: 0
