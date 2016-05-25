@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ArcanoidManager : MonoBehaviour
 {
-    public int lives;
+    public int lives = 4;
     public int score = 0;
 
     ArkanoidBall ball;
@@ -19,6 +19,7 @@ public class ArcanoidManager : MonoBehaviour
     {
         if (ball.transform.position.y < -10.0f)
         {
+            lives -= 1;
             ball.isActivate = false;
         }
     }
