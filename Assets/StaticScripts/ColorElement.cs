@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ColorElement : MonoBehaviour
 {
     public enum _Color { White, Blue, Green, Yellow, Orange, Red}
 
     Camera cam;
+    Text text;
+    RawImage image;
     SpriteRenderer _renderer;
 
     Color32 color;
@@ -22,6 +25,17 @@ public class ColorElement : MonoBehaviour
             cam = GetComponent<Camera>();
             cam.clearFlags = CameraClearFlags.SolidColor;
         }
+
+        else if (gameObject.tag == "UI")
+        {
+            text = GetComponent<Text>();
+        }
+
+        else if (gameObject.tag == "UIimage")
+        {
+            image = GetComponent<RawImage>();
+        }
+
         else
         {
             _renderer = GetComponent<SpriteRenderer>();
@@ -38,6 +52,11 @@ public class ColorElement : MonoBehaviour
 
     void CheckDiff()
     {
+        if(GameInfo.difficulty == 0)
+        {
+            SetColor(_Color.White);
+        }
+
         switch (GameInfo.difficulty)
         {
             case 1:
@@ -91,6 +110,17 @@ public class ColorElement : MonoBehaviour
         if (name.Contains("Main Camera"))
         {
             cam.backgroundColor = color;
+            isPainted = true;
+        }
+
+        else if(gameObject.tag == "UI")
+        {
+            text.color = color;
+            isPainted = true;
+        }
+        else if (gameObject.tag == "UIimage")
+        {
+            image.color = color;
             isPainted = true;
         }
         else
