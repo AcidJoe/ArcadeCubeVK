@@ -49,6 +49,31 @@ public class TestMenu : MonoBehaviour
     {
         GameInfo.difficulty = diff;
 
+        if(diff == 1)
+        {
+            GameInfo.diffName = "Очень легко";
+        }
+        else if(diff == 2)
+        {
+            GameInfo.diffName = "Легко";
+        }
+        else if (diff == 3)
+        {
+            GameInfo.diffName = "Средне";
+        }
+        else if (diff == 4)
+        {
+            GameInfo.diffName = "Сложно";
+        }
+        else if (diff == 5)
+        {
+            GameInfo.diffName = "Очень сложно";
+        }
+        else if (diff == 6)
+        {
+            GameInfo.diffName = "Хардкор";
+        }
+
         SceneManager.LoadScene(game);
     }
 }

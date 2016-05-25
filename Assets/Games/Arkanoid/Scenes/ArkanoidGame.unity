@@ -166,6 +166,12 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 103384, guid: cd01b8c2fe1e6c9428116d1e6038714f, type: 2}
   m_PrefabInternal: {fileID: 27258401}
+--- !u!114 &71440348 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11497236, guid: cd01b8c2fe1e6c9428116d1e6038714f,
+    type: 2}
+  m_PrefabInternal: {fileID: 27258401}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!114 &71440350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 387568161}
+  diff: {fileID: 71440348}
   live1a: {fileID: 1774684635}
   live1ia: {fileID: 1854918477}
   live2a: {fileID: 1471073450}

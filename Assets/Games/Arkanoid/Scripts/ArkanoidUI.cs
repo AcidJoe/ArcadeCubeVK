@@ -7,6 +7,7 @@ public class ArkanoidUI : MonoBehaviour
     ArcanoidManager gameManager;
 
     public Text score;
+    public Text diff;
 
     public RawImage live1a, live1ia, live2a, live2ia, live3a, live3ia;
 
@@ -18,6 +19,7 @@ public class ArkanoidUI : MonoBehaviour
 	void Update ()
     {
         score.text = currentScore(gameManager.score);
+        diff.text = GameInfo.diffName;
 	}
 
     public string currentScore(int i)
