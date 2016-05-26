@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472288}
   - 212: {fileID: 21269148}
+  - 114: {fileID: 11445024}
   m_Layer: 0
   m_Name: TetrisBlock (1)
   m_TagString: Untagged
@@ -25,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461618}
   - 212: {fileID: 21226520}
+  - 114: {fileID: 11481972}
   m_Layer: 0
   m_Name: TetrisBlock (2)
   m_TagString: Untagged
@@ -41,6 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 495312}
   - 212: {fileID: 21259240}
+  - 114: {fileID: 11446600}
   m_Layer: 0
   m_Name: TetrisBlock
   m_TagString: Untagged
@@ -57,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 492378}
   - 212: {fileID: 21280374}
+  - 114: {fileID: 11442714}
   m_Layer: 0
   m_Name: TetrisBlock (3)
   m_TagString: Untagged
@@ -144,6 +148,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419448}
   m_RootOrder: 0
+--- !u!114 &11442714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11445024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11446600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11481972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11486798
 MonoBehaviour:
   m_ObjectHideFlags: 1
