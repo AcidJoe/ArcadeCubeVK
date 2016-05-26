@@ -6,8 +6,6 @@ public class ArcanoidLevelManager : MonoBehaviour
     ArcanoidGrid grid;
     ArcanoidLevelMap map;
 
-    float defaulSpeed;
-
     int[,] levelMap;
 
     public GameObject brick;

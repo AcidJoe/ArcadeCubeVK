@@ -9,10 +9,16 @@ public class ArcanoidManager : MonoBehaviour
     ArkanoidBall ball;
     //Bat player;
 
+    public float defaultSpeed;
+    public int points;
+
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<ArkanoidBall>();
         //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Bat>();
+        defaultSpeed = DifficultyManager.arkspeed;
+        points = DifficultyManager.arkpoints;
+        ball.speed = defaultSpeed;
     }
 
     void Update()
@@ -21,6 +27,7 @@ public class ArcanoidManager : MonoBehaviour
         {
             lives -= 1;
             ball.isActivate = false;
+            ball.speed = defaultSpeed;
         }
     }
 }

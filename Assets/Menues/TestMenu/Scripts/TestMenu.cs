@@ -38,6 +38,24 @@ public class TestMenu : MonoBehaviour
     public void SetGame(int i)
     {
         gameID = i;
+        switch (gameID)
+        {
+            case 1:
+                DifficultyManager.SetGame(DifficultyManager.Game.Arkanoid);
+                break;
+            case 2:
+                DifficultyManager.SetGame(DifficultyManager.Game.Asteroids);
+                break;
+            case 3:
+                DifficultyManager.SetGame(DifficultyManager.Game.Pong);
+                break;
+            case 4:
+                DifficultyManager.SetGame(DifficultyManager.Game.Snake);
+                break;
+            case 5:
+                DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
+                break;
+        }
     }
 
     public void SetDiff(int i)
@@ -48,8 +66,9 @@ public class TestMenu : MonoBehaviour
     void LoadGame(int game, int diff)
     {
         GameInfo.difficulty = diff;
+        DifficultyManager.Settings();
 
-        if(diff == 1)
+        if (diff == 1)
         {
             GameInfo.diffName = "Очень легко";
         }

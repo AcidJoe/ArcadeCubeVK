@@ -15,8 +15,8 @@ public class ArkanoidBrick : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<ArcanoidManager>();
-        points = 1;
-        pointsForHit = 1;
+        points = gameManager.points;
+        pointsForHit = gameManager.points - 1;
         oneHitDetector.SetActive(false);
         numberOfHits = 0;
     }
