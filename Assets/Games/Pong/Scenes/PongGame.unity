@@ -192,6 +192,15 @@ MonoBehaviour:
   Ball: {fileID: 0}
   speed: 20
   default_speed: 0
+  target: 0
+  stupidfactor: 0
+  isStupid: 0
+  stupidTimer: 0
+  timer_default: 0
+  stupmin: 0
+  stupmax: 0
+  stupMaxTime: 0
+  chance: 0
   rb: {fileID: 0}
 --- !u!114 &21875639
 MonoBehaviour:
@@ -752,6 +761,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d59a7b4f6d55fc4e8bfa6bb02306872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScore: 0
+  AIscore: 0
+  pscore: {fileID: 2141166400}
+  aiscore: {fileID: 2037449018}
 --- !u!1 &1496653840
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 20
+  speed: 25
 --- !u!114 &1496653846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,7 +1183,7 @@ GameObject:
   - 114: {fileID: 2037449018}
   - 114: {fileID: 2037449017}
   m_Layer: 0
-  m_Name: PlayerScore (1)
+  m_Name: AI Score
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

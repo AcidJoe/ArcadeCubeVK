@@ -15,6 +15,11 @@ public static class DifficultyManager
 
     public static float pongAIspeed;
     public static float pongBallSpeed;
+    public static float pongstupmin;
+    public static float pongstupmax;
+    public static float pongstuptime;
+    public static int pongchance;
+    public static float pongtimer;
 
     public static void Settings()
     {
@@ -84,26 +89,56 @@ public static class DifficultyManager
                     case 1:
                         pongAIspeed = 7;
                         pongBallSpeed = 17;
+                        pongstupmin = 1;
+                        pongstupmax = 3;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                     case 2:
                         pongAIspeed = 8;
                         pongBallSpeed = 20;
+                        pongstupmin = 0.3f;
+                        pongstupmax = 1;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                     case 3:
                         pongAIspeed = 10;
                         pongBallSpeed = 25;
+                        pongstupmin = 0.3f;
+                        pongstupmax = 1;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                     case 4:
                         pongAIspeed = 11;
                         pongBallSpeed = 30;
+                        pongstupmin = 0.3f;
+                        pongstupmax = 1;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                     case 5:
                         pongAIspeed = 11;
                         pongBallSpeed = 32;
+                        pongstupmin = 0.3f;
+                        pongstupmax = 1;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                     case 6:
                         pongAIspeed = 13;
                         pongBallSpeed = 35;
+                        pongstupmin = 0.3f;
+                        pongstupmax = 1;
+                        pongstuptime = 2;
+                        pongchance = 30;
+                        pongtimer = 1;
                         break;
                 }
                 break;

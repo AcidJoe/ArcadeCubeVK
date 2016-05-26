@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PongManager : MonoBehaviour
 {
@@ -8,8 +9,16 @@ public class PongManager : MonoBehaviour
     float default_speed;
     int dir;
 
+    public int playerScore;
+    public int AIscore;
+
+    public Text pscore;
+    public Text aiscore;
+
 	void Start ()
     {
+        playerScore = 0;
+        AIscore = 0;
         dir = 0;
         default_speed = DifficultyManager.pongBallSpeed;
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<PongBall>();
@@ -18,6 +27,8 @@ public class PongManager : MonoBehaviour
 	
 	void Update ()
     {
+        pscore.text = playerScore.ToString();
+        aiscore.text = AIscore.ToString();
         Goal();
 	}
 
@@ -28,11 +39,13 @@ public class PongManager : MonoBehaviour
             if(ball.transform.position.x > 15)
             {
                 dir = -1;
+                AIscore++;
                 goalSettings();
             }
             else if (ball.transform.position.x < -15)
             {
                 dir = 1;
+                playerScore++;
                 goalSettings();
             }
         }
@@ -58,7 +71,7 @@ public class PongManager : MonoBehaviour
     float ranY()
     {
         float y;
-        y = Random.Range(-1, 1);
+        y = Random.Range(-0.2f, 0.2f);
         return y;
     }
 
