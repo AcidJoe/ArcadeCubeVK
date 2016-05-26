@@ -23,7 +23,7 @@ public class Snake : MonoBehaviour
 
     void Start ()
     {
-        spawnTime = 0.4f;
+        spawnTime = DifficultyManager.snakespeed;
         lenght = 3;
         bits = new Queue<GameObject>();
         setState(State.right);

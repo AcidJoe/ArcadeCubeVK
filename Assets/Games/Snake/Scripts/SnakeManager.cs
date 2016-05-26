@@ -8,6 +8,8 @@ public class SnakeManager : MonoBehaviour
 
     public GameObject snakeFood;
 
+    public int score;
+
     void Start ()
     {
         food = new List<SnakeFood>();

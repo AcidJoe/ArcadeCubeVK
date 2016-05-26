@@ -10,6 +10,9 @@ public static class DifficultyManager
     public static float arkspeed;
     public static int arkpoints;
 
+    public static float snakespeed;
+    public static int snakepoints;
+
     public static void Settings()
     {
         switch (currentGame)
@@ -40,6 +43,35 @@ public static class DifficultyManager
                     case 6:
                         arkspeed = 40;
                         arkpoints = 5;
+                        break;
+                }
+                break;
+            case Game.Snake:
+                switch (GameInfo.difficulty)
+                {
+                    case 1:
+                        snakespeed = 0.5f;
+                        snakepoints = 2;
+                        break;
+                    case 2:
+                        snakespeed = 0.4f;
+                        snakepoints = 2;
+                        break;
+                    case 3:
+                        snakespeed = 0.2f;
+                        snakepoints = 2;
+                        break;
+                    case 4:
+                        snakespeed = 0.2f;
+                        snakepoints = 2;
+                        break;
+                    case 5:
+                        snakespeed = 0.1f;
+                        snakepoints = 2;
+                        break;
+                    case 6:
+                        snakespeed = 0.05f;
+                        snakepoints = 2;
                         break;
                 }
                 break;
