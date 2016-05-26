@@ -11,7 +11,7 @@ public class PongManager : MonoBehaviour
 	void Start ()
     {
         dir = 0;
-        default_speed = 20.0f;
+        default_speed = DifficultyManager.pongBallSpeed;
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<PongBall>();
         StartCoroutine(startGame());
 	}

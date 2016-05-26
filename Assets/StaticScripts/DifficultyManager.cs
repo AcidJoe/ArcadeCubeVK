@@ -13,6 +13,9 @@ public static class DifficultyManager
     public static float snakespeed;
     public static int snakepoints;
 
+    public static float pongAIspeed;
+    public static float pongBallSpeed;
+
     public static void Settings()
     {
         switch (currentGame)
@@ -72,6 +75,35 @@ public static class DifficultyManager
                     case 6:
                         snakespeed = 0.05f;
                         snakepoints = 2;
+                        break;
+                }
+                break;
+            case Game.Pong:
+                switch (GameInfo.difficulty)
+                {
+                    case 1:
+                        pongAIspeed = 7;
+                        pongBallSpeed = 17;
+                        break;
+                    case 2:
+                        pongAIspeed = 8;
+                        pongBallSpeed = 20;
+                        break;
+                    case 3:
+                        pongAIspeed = 10;
+                        pongBallSpeed = 25;
+                        break;
+                    case 4:
+                        pongAIspeed = 11;
+                        pongBallSpeed = 30;
+                        break;
+                    case 5:
+                        pongAIspeed = 11;
+                        pongBallSpeed = 32;
+                        break;
+                    case 6:
+                        pongAIspeed = 13;
+                        pongBallSpeed = 35;
                         break;
                 }
                 break;

@@ -12,7 +12,7 @@ public class PongAI : MonoBehaviour
 
     void Start()
     {
-        default_speed = 10;
+        default_speed = DifficultyManager.pongAIspeed;
         speed = default_speed;
         rb = GetComponent<Rigidbody2D>();
         CurrentTransform = transform;
