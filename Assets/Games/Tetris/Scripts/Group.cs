@@ -4,6 +4,8 @@ using System.Collections;
 public class Group : MonoBehaviour
 {
     float lastFall = 0;
+    float falltime;
+    float fallDefault;
 
     bool leftReady;
     bool RightReady;
