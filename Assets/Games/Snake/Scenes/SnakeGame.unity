@@ -197,6 +197,7 @@ Transform:
   - {fileID: 379374839}
   - {fileID: 1618841605}
   - {fileID: 635473685}
+  - {fileID: 1713085649}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1001 &635473684
@@ -327,6 +328,7 @@ MonoBehaviour:
   snakeBit: {fileID: 118914, guid: eef42ee7c22be9c4d99f0797f4414621, type: 2}
   spawnTime: 0
   lenght: 0
+  isStart: 0
 --- !u!61 &897355314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -684,6 +686,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 1976108112}
   diff: {fileID: 824988865}
+--- !u!1 &1713085648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1713085649}
+  - 114: {fileID: 1713085650}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1713085649
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713085648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 474670949}
+  m_RootOrder: 3
+--- !u!114 &1713085650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713085648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c867616f495756e4fb6d2cba3bc4cf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 118914, guid: eef42ee7c22be9c4d99f0797f4414621, type: 2}
+  isReady: 0
 --- !u!114 &1976108112 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11434574, guid: cd01b8c2fe1e6c9428116d1e6038714f,

@@ -8,6 +8,10 @@ public class Snake : MonoBehaviour
     public float spawnTime;
     public int lenght;
 
+    public bool isStart;
+
+    SnakePoolManager spm;
+
     Queue<GameObject> bits;
 
     Vector3 moveFwd;
@@ -23,11 +27,12 @@ public class Snake : MonoBehaviour
 
     void Start ()
     {
+        isStart = false;
+        spm = FindObjectOfType<SnakePoolManager>();
         spawnTime = DifficultyManager.snakespeed;
         lenght = 3;
         bits = new Queue<GameObject>();
         setState(State.right);
-        Invoke("MoveSnake", spawnTime);
     }
 	
 	void Update ()
@@ -73,6 +78,12 @@ public class Snake : MonoBehaviour
         }
     }
 
+    public void startMove()
+    {
+        isStart = true;
+        Invoke("MoveSnake", spawnTime);
+    }
+
     void MoveSnake()
     {
         isChosen = false;
@@ -97,21 +108,21 @@ public class Snake : MonoBehaviour
         }
 
         transform.position = nextPos;
-
         createBit();
+
         Invoke("MoveSnake", spawnTime);
     }
 
 
     void createBit()
     {
-        var newBit = Instantiate(snakeBit, prevPos, prevRot);
-        GameObject bit = newBit as GameObject;
+        GameObject bit = spm.Create(prevPos);
+
         bits.Enqueue(bit);
 
-        if (bits.Count > lenght)
+        if (bits.Count > lenght && bits.Count != 0)
         {
-            Destroy(bits.Dequeue());
+            spm.Push(bits.Dequeue());
         }
     }
 
