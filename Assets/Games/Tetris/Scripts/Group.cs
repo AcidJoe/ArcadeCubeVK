@@ -20,10 +20,14 @@ public class Group : MonoBehaviour
             //ToDo GameOver
             Destroy(gameObject);
         }
+
+        fallDefault = 0.3f;
+        falltime = fallDefault;
     }
 
     void Update()
     {
+        falltime -= Time.deltaTime;
         // Move Left
         if (Input.GetKey(KeyCode.LeftArrow) && leftReady)
         {
@@ -75,36 +79,36 @@ public class Group : MonoBehaviour
         }
 
          //Move Downwards and Fall
-        else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.3f)
-        {
-            // Modify position
-            transform.position += new Vector3(0, -1, 0);
+        //else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.3f)
+        //{
+        //    // Modify position
+        //    transform.position += new Vector3(0, -1, 0);
 
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-            }
-            else
-            {
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 1, 0);
+        //    // See if valid
+        //    if (isValidGridPos())
+        //    {
+        //        // It's valid. Update grid.
+        //        updateGrid();
+        //    }
+        //    else
+        //    {
+        //        // It's not valid. revert.
+        //        transform.position += new Vector3(0, 1, 0);
 
-                // Clear filled horizontal lines
-                Grid.deleteFullRows();
+        //        // Clear filled horizontal lines
+        //        Grid.deleteFullRows();
 
-                // Spawn next Group
-                FindObjectOfType<Spawner_Tetris>().spawnNext();
+        //        // Spawn next Group
+        //        FindObjectOfType<Spawner_Tetris>().spawnNext();
 
-                // Disable script
-                enabled = false;
-            }
+        //        // Disable script
+        //        enabled = false;
+        //    }
 
-            lastFall = Time.time;
-        }
+        //    lastFall = Time.time;
+        //}
 
-        else if (Time.time - lastFall >= 1)
+        else if (falltime <= 0)
         {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
@@ -129,7 +133,7 @@ public class Group : MonoBehaviour
                 enabled = false;
             }
 
-            lastFall = Time.time;
+            falltime = fallDefault;
         }
     }
 
