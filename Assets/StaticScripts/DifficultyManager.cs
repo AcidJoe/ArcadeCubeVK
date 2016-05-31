@@ -25,6 +25,7 @@ public static class DifficultyManager
     {
         switch (currentGame)
         {
+            #region "Arkanoid"
             case Game.Arkanoid:
                 switch (GameInfo.difficulty)
                 {         
@@ -54,6 +55,8 @@ public static class DifficultyManager
                         break;
                 }
                 break;
+            #endregion
+            #region "Snake"
             case Game.Snake:
                 switch (GameInfo.difficulty)
                 {
@@ -83,6 +86,8 @@ public static class DifficultyManager
                         break;
                 }
                 break;
+            #endregion
+            #region "Pong"
             case Game.Pong:
                 switch (GameInfo.difficulty)
                 {
@@ -142,6 +147,9 @@ public static class DifficultyManager
                         break;
                 }
                 break;
+                #endregion
+            #region "Tetris"
+                #endregion
         }
     }
 
