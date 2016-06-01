@@ -28,7 +28,7 @@ public class AsteroidBig : MonoBehaviour
 
         playerShip = player.GetComponent<AsteroidsShip>();
 
-        dir = new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-4,4), player.position.y + Random.Range(-4, 4));
+        dir = -new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-4,4), player.position.y + Random.Range(-4, 4));
 
         dir = dir.normalized;
 
