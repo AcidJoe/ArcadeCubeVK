@@ -10,6 +10,7 @@ public class AsteroidBig : MonoBehaviour
     public AsteroidsShip playerShip;
 
     float speed;
+    float difficultyMod;
 
     public Transform player;
 
@@ -23,15 +24,17 @@ public class AsteroidBig : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
+        difficultyMod = DifficultyManager.astroSpeedMod;
+
         playerShip = player.GetComponent<AsteroidsShip>();
 
-        dir = new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-12,12), player.position.y + Random.Range(-12, 12));
+        dir = new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-4,4), player.position.y + Random.Range(-4, 4));
 
         dir = dir.normalized;
 
         speed = Random.Range(0.7f, 1.0f);
 
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * difficultyMod;
 	}
 	
 	void Update ()

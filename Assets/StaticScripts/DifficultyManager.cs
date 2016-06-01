@@ -23,6 +23,8 @@ public static class DifficultyManager
     public static float pongtimer;
     //Tetris
     public static float tetrisfallspeed;
+    //Asteroids
+    public static float astroSpeedMod;
 
     public static void Settings()
     {
@@ -172,6 +174,31 @@ public static class DifficultyManager
                         break;
                     case 6:
                         tetrisfallspeed = 0.08f;
+                        break;
+                }
+                break;
+            #endregion
+            #region "Asteroids"
+            case Game.Asteroids:
+                switch (GameInfo.difficulty)
+                {
+                    case 1:
+                        astroSpeedMod = 1.2f;
+                        break;
+                    case 2:
+                        astroSpeedMod = 1.4f;
+                        break;
+                    case 3:
+                        astroSpeedMod = 1.5f;
+                        break;
+                    case 4:
+                        astroSpeedMod = 1.7f;
+                        break;
+                    case 5:
+                        astroSpeedMod = 1.8f;
+                        break;
+                    case 6:
+                        astroSpeedMod = 2;
                         break;
                 }
                 break;
