@@ -12,6 +12,7 @@ public class Group : MonoBehaviour
 
     void Start()
     {
+        Input.ResetInputAxes();
         leftReady = true;
         RightReady = true;
         // Default position not valid? Then it's game over
