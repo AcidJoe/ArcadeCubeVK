@@ -8,13 +8,24 @@ public class SnakeManager : MonoBehaviour
 
     public GameObject snakeFood;
 
+    SnakePoolManager spm;
+    Snake snake;
+
+    public int score;
+
     void Start ()
     {
+        spm = FindObjectOfType<SnakePoolManager>();
+        snake = FindObjectOfType<Snake>();
         food = new List<SnakeFood>();
     }
 	
 	void Update ()
     {
+        if (spm.isReady && !snake.isStart)
+        {
+            snake.startMove();
+        }
         if (food.Count < 1)
         {
             SpawnFood(foodSpawnPoint());

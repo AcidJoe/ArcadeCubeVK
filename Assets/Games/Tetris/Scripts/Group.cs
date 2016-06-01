@@ -4,6 +4,8 @@ using System.Collections;
 public class Group : MonoBehaviour
 {
     float lastFall = 0;
+    float falltime;
+    float fallDefault;
 
     bool leftReady;
     bool RightReady;
@@ -18,13 +20,18 @@ public class Group : MonoBehaviour
             //ToDo GameOver
             Destroy(gameObject);
         }
+
+        fallDefault = DifficultyManager.tetrisfallspeed;
+        falltime = fallDefault;
     }
 
     void Update()
     {
+        falltime -= Time.deltaTime;
         // Move Left
         if (Input.GetKey(KeyCode.LeftArrow) && leftReady)
         {
+            RightReady = true;
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
 
@@ -36,13 +43,17 @@ public class Group : MonoBehaviour
                 StartCoroutine(leftMove());
             }
             else
+            {
                 // It's not valid. revert.
+                leftReady = false;
                 transform.position += new Vector3(1, 0, 0);
+            }
         }
 
         // Move Right
         else if (Input.GetKey(KeyCode.RightArrow) && RightReady)
         {
+            leftReady = true;
             // Modify position
             transform.position += new Vector3(1, 0, 0);
 
@@ -54,8 +65,11 @@ public class Group : MonoBehaviour
                 StartCoroutine(rightMove());
             }
             else
+            {
                 // It's not valid. revert.
+                RightReady = false;
                 transform.position += new Vector3(-1, 0, 0);
+            }
         }
 
         // Rotate
@@ -72,9 +86,54 @@ public class Group : MonoBehaviour
                 transform.Rotate(0, 0, 90);
         }
 
-         //Move Downwards and Fall
-        else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.3f)
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            fallDefault *= 0.5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            fallDefault *= 2;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fallDefault *= 0;
+        }
+
+         //Move Downwards and Fall
+        //else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.3f)
+        //{
+        //    // Modify position
+        //    transform.position += new Vector3(0, -1, 0);
+
+        //    // See if valid
+        //    if (isValidGridPos())
+        //    {
+        //        // It's valid. Update grid.
+        //        updateGrid();
+        //    }
+        //    else
+        //    {
+        //        // It's not valid. revert.
+        //        transform.position += new Vector3(0, 1, 0);
+
+        //        // Clear filled horizontal lines
+        //        Grid.deleteFullRows();
+
+        //        // Spawn next Group
+        //        FindObjectOfType<Spawner_Tetris>().spawnNext();
+
+        //        // Disable script
+        //        enabled = false;
+        //    }
+
+        //    lastFall = Time.time;
+        //}
+
+        else if (falltime <= 0)
+        {
+            leftReady = true;
+            RightReady = true;
             // Modify position
             transform.position += new Vector3(0, -1, 0);
 
@@ -93,41 +152,14 @@ public class Group : MonoBehaviour
                 Grid.deleteFullRows();
 
                 // Spawn next Group
+                fallDefault = DifficultyManager.tetrisfallspeed;
                 FindObjectOfType<Spawner_Tetris>().spawnNext();
 
                 // Disable script
                 enabled = false;
             }
 
-            lastFall = Time.time;
-        }
-
-        else if (Time.time - lastFall >= 1)
-        {
-            // Modify position
-            transform.position += new Vector3(0, -1, 0);
-
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-            }
-            else {
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 1, 0);
-
-                // Clear filled horizontal lines
-                Grid.deleteFullRows();
-
-                // Spawn next Group
-                FindObjectOfType<Spawner_Tetris>().spawnNext();
-
-                // Disable script
-                enabled = false;
-            }
-
-            lastFall = Time.time;
+            falltime = fallDefault;
         }
     }
 
@@ -169,14 +201,14 @@ public class Group : MonoBehaviour
     IEnumerator leftMove()
     {
         leftReady = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         leftReady = true;
     }
 
     IEnumerator rightMove()
     {
         RightReady = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         RightReady = true;
     }
 }

@@ -17,6 +17,7 @@ public class SnakeFood : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             col.GetComponent<Snake>().lenght += 1;
+            manager.score += DifficultyManager.snakepoints;
         }
 
         manager.food.Clear();

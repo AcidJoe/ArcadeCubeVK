@@ -8,6 +8,7 @@ public class AsteroidMid : MonoBehaviour
     Vector2 dir;
 
     float speed;
+    float difficultyMod;
 
     public AsteroidsShip playerShip;
 
@@ -25,11 +26,13 @@ public class AsteroidMid : MonoBehaviour
 
         dir = dir.normalized;
 
+        difficultyMod = DifficultyManager.astroSpeedMod;
+
         playerShip = GameObject.FindGameObjectWithTag("Player").GetComponent<AsteroidsShip>();
 
         speed = Random.Range(1.0f, 1.3f);
 
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * difficultyMod;
     }
 
     void Update()

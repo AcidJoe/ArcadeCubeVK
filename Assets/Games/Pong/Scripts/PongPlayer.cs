@@ -8,6 +8,7 @@ public class PongPlayer : MonoBehaviour
 
     void Start()
     {
+        speed = 25;
         rb = GetComponent<Rigidbody2D>();
     }
 

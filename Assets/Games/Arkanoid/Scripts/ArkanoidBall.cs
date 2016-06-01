@@ -66,6 +66,7 @@ public class ArkanoidBall : MonoBehaviour
 
             // Set Velocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * speed;
+            speed += 0.5f;
         }
     }
 }

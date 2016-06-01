@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420470}
   - 212: {fileID: 21229140}
+  - 114: {fileID: 11484750}
   m_Layer: 0
   m_Name: TetrisBlock (3)
   m_TagString: Untagged
@@ -25,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 407436}
   - 212: {fileID: 21223248}
+  - 114: {fileID: 11416750}
   m_Layer: 0
   m_Name: TetrisBlock (2)
   m_TagString: Untagged
@@ -41,6 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 451962}
   - 212: {fileID: 21267728}
+  - 114: {fileID: 11413376}
   m_Layer: 0
   m_Name: TetrisBlock
   m_TagString: Untagged
@@ -73,6 +76,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421530}
   - 212: {fileID: 21287426}
+  - 114: {fileID: 11486408}
   m_Layer: 0
   m_Name: TetrisBlock (1)
   m_TagString: Untagged
@@ -144,6 +148,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 426944}
   m_RootOrder: 0
+--- !u!114 &11413376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11416750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11484030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +179,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4bec69dacf90ca4fbb9a1c20d8b5d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11484750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11486408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21223248
