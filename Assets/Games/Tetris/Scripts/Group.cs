@@ -21,7 +21,7 @@ public class Group : MonoBehaviour
             Destroy(gameObject);
         }
 
-        fallDefault = 0.3f;
+        fallDefault = DifficultyManager.tetrisfallspeed;
         falltime = fallDefault;
     }
 
@@ -31,6 +31,7 @@ public class Group : MonoBehaviour
         // Move Left
         if (Input.GetKey(KeyCode.LeftArrow) && leftReady)
         {
+            RightReady = true;
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
 
@@ -42,13 +43,17 @@ public class Group : MonoBehaviour
                 StartCoroutine(leftMove());
             }
             else
+            {
                 // It's not valid. revert.
+                leftReady = false;
                 transform.position += new Vector3(1, 0, 0);
+            }
         }
 
         // Move Right
         else if (Input.GetKey(KeyCode.RightArrow) && RightReady)
         {
+            leftReady = true;
             // Modify position
             transform.position += new Vector3(1, 0, 0);
 
@@ -60,8 +65,11 @@ public class Group : MonoBehaviour
                 StartCoroutine(rightMove());
             }
             else
+            {
                 // It's not valid. revert.
+                RightReady = false;
                 transform.position += new Vector3(-1, 0, 0);
+            }
         }
 
         // Rotate
@@ -76,6 +84,20 @@ public class Group : MonoBehaviour
             else
                 // It's not valid. revert.
                 transform.Rotate(0, 0, 90);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            fallDefault *= 0.5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            fallDefault *= 2;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fallDefault *= 0;
         }
 
          //Move Downwards and Fall
@@ -110,6 +132,8 @@ public class Group : MonoBehaviour
 
         else if (falltime <= 0)
         {
+            leftReady = true;
+            RightReady = true;
             // Modify position
             transform.position += new Vector3(0, -1, 0);
 
@@ -119,7 +143,8 @@ public class Group : MonoBehaviour
                 // It's valid. Update grid.
                 updateGrid();
             }
-            else {
+            else
+            {
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
 
@@ -127,6 +152,7 @@ public class Group : MonoBehaviour
                 Grid.deleteFullRows();
 
                 // Spawn next Group
+                fallDefault = DifficultyManager.tetrisfallspeed;
                 FindObjectOfType<Spawner_Tetris>().spawnNext();
 
                 // Disable script
@@ -175,14 +201,14 @@ public class Group : MonoBehaviour
     IEnumerator leftMove()
     {
         leftReady = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         leftReady = true;
     }
 
     IEnumerator rightMove()
     {
         RightReady = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         RightReady = true;
     }
 }

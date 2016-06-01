@@ -7,12 +7,13 @@ public static class DifficultyManager
 
     public static Game currentGame = Game.Unset;
 
+    //Arkanoid
     public static float arkspeed;
     public static int arkpoints;
-
+    //Snake
     public static float snakespeed;
     public static int snakepoints;
-
+    //Pong
     public static float pongAIspeed;
     public static float pongBallSpeed;
     public static float pongstupmin;
@@ -20,6 +21,8 @@ public static class DifficultyManager
     public static float pongstuptime;
     public static int pongchance;
     public static float pongtimer;
+    //Tetris
+    public static float tetrisfallspeed;
 
     public static void Settings()
     {
@@ -147,8 +150,31 @@ public static class DifficultyManager
                         break;
                 }
                 break;
-                #endregion
+            #endregion
             #region "Tetris"
+            case Game.Tetris:
+                switch (GameInfo.difficulty)
+                {
+                    case 1:
+                        tetrisfallspeed = 1;
+                        break;
+                    case 2:
+                        tetrisfallspeed = 0.8f;
+                        break;
+                    case 3:
+                        tetrisfallspeed = 0.6f;
+                        break;
+                    case 4:
+                        tetrisfallspeed = 0.4f;
+                        break;
+                    case 5:
+                        tetrisfallspeed = 0.2f;
+                        break;
+                    case 6:
+                        tetrisfallspeed = 0.08f;
+                        break;
+                }
+                break;
                 #endregion
         }
     }
