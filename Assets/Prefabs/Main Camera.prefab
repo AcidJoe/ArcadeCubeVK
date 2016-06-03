@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monochrome: 1
-  grainIntensityMin: 0.01
-  grainIntensityMax: 0.02
+  grainIntensityMin: 0.02
+  grainIntensityMax: 0.03
   grainSize: 2
   scratchIntensityMin: 0
   scratchIntensityMax: 0

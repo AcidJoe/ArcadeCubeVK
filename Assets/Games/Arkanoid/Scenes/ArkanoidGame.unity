@@ -741,6 +741,22 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 182776, guid: cd01b8c2fe1e6c9428116d1e6038714f, type: 2}
   m_PrefabInternal: {fileID: 27258401}
+--- !u!1 &1669280809 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 124436, guid: 97183ded730d43e4795ff397dfadb160, type: 2}
+  m_PrefabInternal: {fileID: 1329129261}
+--- !u!114 &1669280810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669280809}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830f6bb72b9f6944e8b43049ee860fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: b9fa4f6a70aa8674c9415e5725679a90, type: 3}
 --- !u!1 &1774684633 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 167594, guid: cd01b8c2fe1e6c9428116d1e6038714f, type: 2}
