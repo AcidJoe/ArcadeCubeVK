@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11429148}
   - 114: {fileID: 11479916}
   - 114: {fileID: 11423314}
+  - 114: {fileID: 11423124}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -83,6 +84,22 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124436}
   m_Enabled: 1
+--- !u!114 &11423124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830f6bb72b9f6944e8b43049ee860fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: b9fa4f6a70aa8674c9415e5725679a90, type: 3}
+  verts_force: 0
+  verts_force_2: 0
+  contrast: 3
+  brightness: 0
 --- !u!114 &11423314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monochrome: 1
-  grainIntensityMin: 0.02
-  grainIntensityMax: 0.03
+  grainIntensityMin: 0.05
+  grainIntensityMax: 0.12
   grainSize: 2
   scratchIntensityMin: 0
   scratchIntensityMax: 0
@@ -132,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  intensity: 0.01
+  intensity: 0.24
   chromaticAberration: 2
   axialAberration: 2.25
   blur: 0.18
