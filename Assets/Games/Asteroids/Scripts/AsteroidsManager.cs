@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class AsteroidsManager : MonoBehaviour
 {
-    public int score;
+    public int lives = 4;
+    public int score = 0;
 
     public Vector3 spawn_point_1;
     public Vector3 spawn_point_2;
