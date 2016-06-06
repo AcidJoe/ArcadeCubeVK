@@ -3,6 +3,15 @@ using System.Collections;
 
 public class Grid : MonoBehaviour
 {
+    static TetrisManager manager;
+    static int multiplier;
+
+    void Start()
+    {
+        multiplier = 1;
+        manager = FindObjectOfType<TetrisManager>();
+    }
+
     public static int w = 11;
     public static int h = 25;
     public static Transform[,] grid = new Transform[w, h];
@@ -27,6 +36,8 @@ public class Grid : MonoBehaviour
             Destroy(grid[x, y].gameObject);
             grid[x, y] = null;
         }
+
+        manager.score += DifficultyManager.tetrispoints * multiplier;
     }
 
     public static void decreaseRow(int y)
@@ -68,7 +79,11 @@ public class Grid : MonoBehaviour
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;
+
+                multiplier++;
             }
         }
+
+        multiplier = 1;
     }
 }

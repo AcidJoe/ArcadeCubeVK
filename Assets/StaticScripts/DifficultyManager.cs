@@ -23,6 +23,7 @@ public static class DifficultyManager
     public static float pongtimer;
     //Tetris
     public static float tetrisfallspeed;
+    public static int tetrispoints;
     //Asteroids
     public static float astroSpeedMod;
     public static int astroCount;
@@ -160,21 +161,27 @@ public static class DifficultyManager
                 {
                     case 1:
                         tetrisfallspeed = 1;
+                        tetrispoints = 1;
                         break;
                     case 2:
                         tetrisfallspeed = 0.8f;
+                        tetrispoints = 1;
                         break;
                     case 3:
                         tetrisfallspeed = 0.6f;
+                        tetrispoints = 2;
                         break;
                     case 4:
                         tetrisfallspeed = 0.4f;
+                        tetrispoints = 3;
                         break;
                     case 5:
                         tetrisfallspeed = 0.2f;
+                        tetrispoints = 4;
                         break;
                     case 6:
                         tetrisfallspeed = 0.08f;
+                        tetrispoints = 5;
                         break;
                 }
                 break;
