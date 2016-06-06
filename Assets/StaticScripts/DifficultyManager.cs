@@ -27,6 +27,7 @@ public static class DifficultyManager
     //Asteroids
     public static float astroSpeedMod;
     public static int astroCount;
+    public static int astroPoints;
 
     public static void Settings()
     {
@@ -193,26 +194,32 @@ public static class DifficultyManager
                     case 1:
                         astroSpeedMod = 1.2f;
                         astroCount = 2;
+                        astroPoints = 1;
                         break;
                     case 2:
                         astroSpeedMod = 1.4f;
                         astroCount = 2;
+                        astroPoints = 2;
                         break;
                     case 3:
                         astroSpeedMod = 1.5f;
                         astroCount = 3;
+                        astroPoints = 2;
                         break;
                     case 4:
                         astroSpeedMod = 1.7f;
                         astroCount = 3;
+                        astroPoints = 3;
                         break;
                     case 5:
                         astroSpeedMod = 1.8f;
                         astroCount = 4;
+                        astroPoints = 3;
                         break;
                     case 6:
                         astroSpeedMod = 2;
                         astroCount = 4;
+                        astroPoints = 4;
                         break;
                 }
                 break;

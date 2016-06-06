@@ -12,6 +12,7 @@ public class AsteroidMid : MonoBehaviour
 
     public AsteroidsShip playerShip;
 
+    AsteroidsManager astroMan;
 
     public GameObject astersm1;
     public GameObject astersm2;
@@ -20,6 +21,8 @@ public class AsteroidMid : MonoBehaviour
 
     void Awake()
     {
+        astroMan = FindObjectOfType<AsteroidsManager>();
+
         rb = GetComponent<Rigidbody2D>();
 
         dir = new Vector2(transform.position.x, transform.position.y) - new Vector2(Random.Range(-1000, 1000), Random.Range(-1000, 1000));
@@ -61,6 +64,8 @@ public class AsteroidMid : MonoBehaviour
 
     void Crack()
     {
+        astroMan.score += DifficultyManager.astroPoints * 2;
+
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);
