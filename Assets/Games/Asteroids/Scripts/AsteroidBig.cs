@@ -12,6 +12,8 @@ public class AsteroidBig : MonoBehaviour
     float speed;
     float difficultyMod;
 
+    AsteroidsManager astroMan;
+
     public Transform player;
 
     public GameObject astermid1;
@@ -21,6 +23,8 @@ public class AsteroidBig : MonoBehaviour
 
     void Awake ()
     {
+        astroMan = FindObjectOfType<AsteroidsManager>();
+
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
@@ -63,6 +67,8 @@ public class AsteroidBig : MonoBehaviour
 
     void Crack()
     {
+        astroMan.score += DifficultyManager.astroPoints * 3;
+
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);

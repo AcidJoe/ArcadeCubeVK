@@ -10,10 +10,14 @@ public class AsteroidSmall : MonoBehaviour
     float speed;
     float difficultyMod;
 
+    AsteroidsManager astroMan;
+
     public AsteroidsShip playerShip;
 
     void Awake()
     {
+        astroMan = FindObjectOfType<AsteroidsManager>();
+
         rb = GetComponent<Rigidbody2D>();
 
         dir = new Vector2(transform.position.x, transform.position.y) - new Vector2(Random.Range(-1000, 1000), Random.Range(-1000, 1000));
@@ -36,6 +40,7 @@ public class AsteroidSmall : MonoBehaviour
 
     void Crack()
     {
+        astroMan.score += DifficultyManager.astroPoints;
         Destroy(gameObject);
     }
 
