@@ -9,6 +9,9 @@ public class Profile
     public int s_tokens;
     public int g_tokens;
 
+    public int lvl;
+    public int exp;
+
     public Profile(string n)
     {
         name = n;
@@ -16,5 +19,8 @@ public class Profile
         b_tokens = 50;
         s_tokens = 50;
         g_tokens = 50;
+
+        lvl = 1;
+        exp = 0;
     }
 }
