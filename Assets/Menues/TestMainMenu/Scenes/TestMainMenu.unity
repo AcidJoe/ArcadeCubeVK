@@ -131,6 +131,7 @@ MonoBehaviour:
   stoken: {fileID: 1430410384}
   gtoken: {fileID: 249788065}
   photo: {fileID: 263041281}
+  progressBar: {fileID: 569622599}
 --- !u!1 &249788063
 GameObject:
   m_ObjectHideFlags: 0
