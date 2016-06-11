@@ -16,8 +16,15 @@ public class TestMainMenu : MonoBehaviour
 
     public Image progressBar;
 
+    public Sprite sprite;
+
     void Start()
     {
+        if(Game.player == null)
+        {
+            Game.player = new Profile("Тестер");
+        }
+
         _name.text = Game.player.name;
     }
 
@@ -29,5 +36,6 @@ public class TestMainMenu : MonoBehaviour
         stoken.text = Game.player.s_tokens.ToString();
         gtoken.text = Game.player.g_tokens.ToString();
         progressBar.fillAmount = (float)ExpManager.Calculate(Game.player.exp) / (float)ExpManager.expToNext;
+        photo.sprite = sprite;
     }
 }
