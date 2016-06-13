@@ -26,10 +26,6 @@ public class TestMainMenu : MonoBehaviour
 
     public GameObject currentToken;
 
-    public GameObject bronze;
-    public GameObject silver;
-    public GameObject gold;
-
     public GameObject tokenbutton_b, tokenbutton_s, tokenbutton_g;
 
     void Start()
@@ -85,19 +81,6 @@ public class TestMainMenu : MonoBehaviour
                     currentPanel = playPanel;
                     backButton.SetActive(true);
                     Tokens(true);
-                }
-                break;
-        }
-    }
-
-    public void takeToken(int i)
-    {
-        switch (i)
-        {
-            case 1:
-                if (!currentToken && Input.GetMouseButton(0))
-                {
-                    currentToken = Instantiate(bronze);
                 }
                 break;
         }
