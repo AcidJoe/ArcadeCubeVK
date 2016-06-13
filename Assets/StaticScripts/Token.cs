@@ -20,7 +20,7 @@ public class Token : MonoBehaviour
 
     void OnMouseDrag()
     {
-        transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -5);
+        transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
     }
 
     void OnMouseUp()
