@@ -9,6 +9,9 @@ public class CubeManager : MonoBehaviour
 
     public Text game;
     public Text diff;
+    public Image fill;
+
+    public float fillTimer;
 
     public int gameID;
     public int DiffID;
@@ -16,11 +19,13 @@ public class CubeManager : MonoBehaviour
     public string gameName;
     public string diffName;
 
-    public float timer = 0.05f;
+    public float timer = 0.001f;
     public bool isRandomize;
 
     void Start ()
     {
+        Game.isReady = false;
+        fillTimer = 2.3f;
         isRandomize = false;
         greatingsPanel.SetActive(true);
         randomizerPanel.SetActive(false);
@@ -30,6 +35,12 @@ public class CubeManager : MonoBehaviour
     {
         game.text = gameName;
         diff.text = diffName;
+        fill.fillAmount = fillTimer / 2.3f;
+
+        if (isRandomize)
+        {
+            fillTimer -= Time.deltaTime;
+        }
 	}
 
     void OnEnable()
@@ -55,6 +66,29 @@ public class CubeManager : MonoBehaviour
         random();
         yield return new WaitForSeconds(2.3f);
         isRandomize = false;
+        switch (gameID)
+        {
+            case 1:
+                DifficultyManager.SetGame(DifficultyManager.Game.Arkanoid);
+                break;
+            case 2:
+                DifficultyManager.SetGame(DifficultyManager.Game.Asteroids);
+                break;
+            case 3:
+                DifficultyManager.SetGame(DifficultyManager.Game.Pong);
+                break;
+            case 4:
+                DifficultyManager.SetGame(DifficultyManager.Game.Snake);
+                break;
+            case 5:
+                DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
+                break;
+        }
+        GameInfo.difficulty = DiffID;
+        GameInfo.diffName = diffName;
+        Game.currentGame = gameID;
+        Game.isReady = true;
+        fillTimer = 0;
     }
 
     void random()
@@ -67,7 +101,7 @@ public class CubeManager : MonoBehaviour
         if (isRandomize)
         {
             Invoke("random", timer);
-            timer += 0.02f;
+            timer += 0.002f;
         }
     }
 

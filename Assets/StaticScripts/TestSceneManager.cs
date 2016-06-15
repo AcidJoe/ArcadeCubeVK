@@ -19,6 +19,15 @@ public class TestSceneManager : MonoBehaviour
 
     void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(6);
+    }
+
+    public void LoadLevel()
+    {
+        if (Game.isReady)
+        {
+            DifficultyManager.Settings();
+            SceneManager.LoadScene(Game.currentGame);
+        }
     }
 }
