@@ -23,4 +23,9 @@ public class Profile
         lvl = 1;
         exp = 0;
     }
+
+    public void PayB_coin()
+    {
+        b_tokens--;
+    }
 }

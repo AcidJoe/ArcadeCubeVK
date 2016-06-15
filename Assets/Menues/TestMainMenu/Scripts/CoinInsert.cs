@@ -35,6 +35,25 @@ public class CoinInsert : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (!col.gameObject.GetComponent<Token>().isActive)
+        {
+            switch (col.gameObject.name)
+            {
+                case "Token-Bronze":
+                    EventManager.OnInsert("b");
+                    break;
+                case "Token-Silver":
+                    Debug.Log("Silver Inserted");
+                    break;
+                case "Token-Gold":
+                    Debug.Log("Gold Inserted");
+                    break;
+            }
+        }
+    }
+
     void OnTriggerExit2D(Collider2D col)
     {
         bReady = false;

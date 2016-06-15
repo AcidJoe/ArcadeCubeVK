@@ -8,7 +8,7 @@ public class Token : MonoBehaviour
     public Vector3 origin;
     public Vector3 mousePos;
 
-    bool isActive;
+    public bool isActive;
     bool isInPlace;
 
     void Start()
@@ -23,7 +23,7 @@ public class Token : MonoBehaviour
 
         if(!isActive && !isInPlace)
         {
-            transform.Translate((origin - transform.position).normalized * Time.deltaTime * 10);
+            transform.Translate((origin - transform.position).normalized * Time.deltaTime * 25);
 
             if (Mathf.Abs(origin.x - transform.position.x) < 0.5f && Mathf.Abs(origin.y - transform.position.y) < 0.5f)
             {
@@ -49,5 +49,20 @@ public class Token : MonoBehaviour
     {
         menu.currentToken = null;
         isActive = false;
+    }
+
+    void OnEnable()
+    {
+        EventManager.bInsert += Back;
+    }
+
+    void OnDisable()
+    {
+        EventManager.bInsert -= Back;
+    }
+
+    void Back()
+    {
+        transform.position = origin;
     }
 }

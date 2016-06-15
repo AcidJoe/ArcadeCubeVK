@@ -28,8 +28,17 @@ public class TestMainMenu : MonoBehaviour
 
     public GameObject tokenbutton_b, tokenbutton_s, tokenbutton_g;
 
+    public bool isBronzeIn;
+    public bool isSilverIn;
+    public bool isGoldIn;
+
+
     void Start()
     {
+        isBronzeIn = false;
+        isSilverIn = false;
+        isGoldIn = false;
+
         Tokens(false);
         currentPanel = mainPanel;
         backButton.SetActive(false);
@@ -100,5 +109,21 @@ public class TestMainMenu : MonoBehaviour
             tokenbutton_s.SetActive(false);
             tokenbutton_g.SetActive(false);
         }
+    }
+
+    void OnEnable()
+    {
+        EventManager.bInsert += InsertB_Coin;
+    }
+
+    void OnDisable()
+    {
+        EventManager.bInsert -= InsertB_Coin;
+    }
+
+    void InsertB_Coin()
+    {
+        Game.player.PayB_coin();
+        isBronzeIn = true;
     }
 }
