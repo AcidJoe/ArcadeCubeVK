@@ -84,9 +84,6 @@ public class CubeManager : MonoBehaviour
                 DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
                 break;
         }
-        GameInfo.difficulty = DiffID;
-        GameInfo.diffName = diffName;
-        Game.currentGame = gameID;
         Game.isReady = true;
         fillTimer = 0;
     }
@@ -103,6 +100,10 @@ public class CubeManager : MonoBehaviour
             Invoke("random", timer);
             timer += 0.002f;
         }
+
+        GameInfo.difficulty = DiffID;
+        GameInfo.diffName = diffName;
+        Game.currentGame = gameID;
     }
 
     void SetNames(int gid, int did)
