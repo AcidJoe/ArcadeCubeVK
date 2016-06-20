@@ -67,28 +67,14 @@ public class CubeManager : MonoBehaviour
 
     IEnumerator randomizer()
     {
+        Randomizer.SetGame();
         isRandomize = true;
         random();
         yield return new WaitForSeconds(2.3f);
+        SetNames(Game.currentGame, GameInfo.difficulty);
+        Game.currengGameName = gameName;
+        GameInfo.diffName = diffName;
         isRandomize = false;
-        switch (gameID)
-        {
-            case 1:
-                DifficultyManager.SetGame(DifficultyManager.Game.Arkanoid);
-                break;
-            case 2:
-                DifficultyManager.SetGame(DifficultyManager.Game.Asteroids);
-                break;
-            case 3:
-                DifficultyManager.SetGame(DifficultyManager.Game.Pong);
-                break;
-            case 4:
-                DifficultyManager.SetGame(DifficultyManager.Game.Snake);
-                break;
-            case 5:
-                DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
-                break;
-        }
         Game.isReady = true;
         fillTimer = 0;
     }
@@ -105,12 +91,6 @@ public class CubeManager : MonoBehaviour
             Invoke("random", timer);
             timer += 0.002f;
         }
-
-        GameInfo.difficulty = DiffID;
-        GameInfo.diffName = diffName;
-        Game.currentGame = gameID;
-        Game.currengGameName = gameName;
-        SetNames(Game.currentGame, GameInfo.difficulty);
     }
 
     void SetNames(int gid, int did)
@@ -119,23 +99,18 @@ public class CubeManager : MonoBehaviour
         {
             case 1:
                 gameName = "Арканоид";
-                DifficultyManager.SetGame(DifficultyManager.Game.Arkanoid);
                 break;
             case 2:
                 gameName = "Астеройды";
-                DifficultyManager.SetGame(DifficultyManager.Game.Asteroids);
                 break;
             case 3:
                 gameName = "Понг";
-                DifficultyManager.SetGame(DifficultyManager.Game.Pong);
                 break;
             case 4:
                 gameName = "Змейка";
-                DifficultyManager.SetGame(DifficultyManager.Game.Snake);
                 break;
             case 5:
                 gameName = "Тетрис";
-                DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
                 break;
         }
 
