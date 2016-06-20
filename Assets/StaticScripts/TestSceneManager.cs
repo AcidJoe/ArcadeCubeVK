@@ -26,8 +26,14 @@ public class TestSceneManager : MonoBehaviour
     {
         if (Game.isReady)
         {
-            DifficultyManager.Settings();
-            SceneManager.LoadScene(Game.currentGame);
+            StartCoroutine(setVars());
         }
+    }
+
+    public IEnumerator setVars()
+    {
+        DifficultyManager.Settings();
+        yield return new WaitForSeconds(0.4f);
+        SceneManager.LoadScene(Game.currentGame);
     }
 }

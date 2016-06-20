@@ -8,7 +8,7 @@ public class PongPlayer : MonoBehaviour
 
     void Start()
     {
-        speed = 25;
+        speed = 1500;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -16,7 +16,7 @@ public class PongPlayer : MonoBehaviour
     {
         float dir = Input.GetAxis("Vertical");
 
-        rb.velocity = (new Vector2(0, dir)) * speed;
+        rb.velocity = (new Vector2(0, dir)).normalized * speed * Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D col)

@@ -33,13 +33,18 @@ public class CubeManager : MonoBehaviour
 	
 	void Update ()
     {
-        game.text = gameName;
-        diff.text = diffName;
         fill.fillAmount = fillTimer / 2.3f;
 
         if (isRandomize)
         {
+            game.text = gameName;
+            diff.text = diffName;
             fillTimer -= Time.deltaTime;
+        }
+        else
+        {
+            game.text = Game.currengGameName;
+            diff.text = GameInfo.diffName;
         }
 	}
 
@@ -104,6 +109,8 @@ public class CubeManager : MonoBehaviour
         GameInfo.difficulty = DiffID;
         GameInfo.diffName = diffName;
         Game.currentGame = gameID;
+        Game.currengGameName = gameName;
+        SetNames(Game.currentGame, GameInfo.difficulty);
     }
 
     void SetNames(int gid, int did)
@@ -112,18 +119,23 @@ public class CubeManager : MonoBehaviour
         {
             case 1:
                 gameName = "Арканоид";
+                DifficultyManager.SetGame(DifficultyManager.Game.Arkanoid);
                 break;
             case 2:
                 gameName = "Астеройды";
+                DifficultyManager.SetGame(DifficultyManager.Game.Asteroids);
                 break;
             case 3:
                 gameName = "Понг";
+                DifficultyManager.SetGame(DifficultyManager.Game.Pong);
                 break;
             case 4:
                 gameName = "Змейка";
+                DifficultyManager.SetGame(DifficultyManager.Game.Snake);
                 break;
             case 5:
                 gameName = "Тетрис";
+                DifficultyManager.SetGame(DifficultyManager.Game.Tetris);
                 break;
         }
 

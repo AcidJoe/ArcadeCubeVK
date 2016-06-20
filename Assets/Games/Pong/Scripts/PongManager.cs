@@ -22,6 +22,11 @@ public class PongManager : MonoBehaviour
         dir = 0;
         default_speed = DifficultyManager.pongBallSpeed;
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<PongBall>();
+
+        if(DifficultyManager.pongBallSpeed == 0)
+        {
+            default_speed = 10;
+        } 
         StartCoroutine(startGame());
 	}
 	
@@ -53,7 +58,7 @@ public class PongManager : MonoBehaviour
 
     public IEnumerator startGame()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         goalSettings();
     }
