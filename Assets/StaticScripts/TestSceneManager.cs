@@ -32,6 +32,7 @@ public class TestSceneManager : MonoBehaviour
 
     public IEnumerator setVars()
     {
+        Randomizer.SetToDiffMan();
         DifficultyManager.Settings();
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(Game.currentGame);
