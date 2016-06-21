@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Randomizer : MonoBehaviour
 {
-    public static void SetGame()
+    public static void SetGame(int i)
     {
         int ranGame = Random.Range(0, 100);
         int ranDiff = Random.Range(1, 6);
@@ -29,9 +29,21 @@ public class Randomizer : MonoBehaviour
             ranGame = 5;
         }
 
-        Game.currentGame = ranGame;
-        GameInfo.difficulty = ranDiff;
-        SetToDiffMan(Game.currentGame);
+        if (i == 0)
+        {
+            Game.currentGame = ranGame;
+            GameInfo.difficulty = ranDiff;
+            SetToDiffMan(Game.currentGame);
+        }
+        else if(i == 1)
+        {
+            Game.currentGame = ranGame;
+        }
+        else if(i == 2)
+        {
+            GameInfo.difficulty = ranDiff;
+            SetToDiffMan(Game.currentGame);
+        }
     }
 
     public static void SetToDiffMan(int i)

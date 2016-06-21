@@ -31,6 +31,10 @@ public class EventManager : MonoBehaviour
                 }
                 break;
             case "s":
+                if (manager.isBronzeIn && !manager.isSilverIn)
+                {
+                    sInsert();
+                }
                 break;
             case "g":
                 break;

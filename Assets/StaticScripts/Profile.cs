@@ -28,4 +28,9 @@ public class Profile
     {
         b_tokens--;
     }
+
+    public void PayS_coin()
+    {
+        s_tokens--;
+    }
 }

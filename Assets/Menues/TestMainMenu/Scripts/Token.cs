@@ -54,11 +54,13 @@ public class Token : MonoBehaviour
     void OnEnable()
     {
         EventManager.bInsert += Back;
+        EventManager.sInsert += Back;
     }
 
     void OnDisable()
     {
         EventManager.bInsert -= Back;
+        EventManager.sInsert -= Back;
     }
 
     void Back()

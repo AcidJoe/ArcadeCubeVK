@@ -22,8 +22,11 @@ public class CubeManager : MonoBehaviour
     public float timer = 0.001f;
     public bool isRandomize;
 
+    bool isReadyToChoose;
+
     void Start ()
     {
+        isReadyToChoose = false;
         Game.isReady = false;
         fillTimer = 2.3f;
         isRandomize = false;
@@ -51,25 +54,44 @@ public class CubeManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.bInsert += BronzeCoin;
+        EventManager.sInsert += SilverCoin;
     }
 
     void OnDisable()
     {
         EventManager.bInsert -= BronzeCoin;
+        EventManager.sInsert -= SilverCoin;
     }
 
     void BronzeCoin()
     {
         greatingsPanel.SetActive(false);
         randomizerPanel.SetActive(true);
-        StartCoroutine(randomizer());
+        StartCoroutine(randomizer(0));
     }
 
-    IEnumerator randomizer()
+    void SilverCoin()
     {
-        Randomizer.SetGame();
+        isReadyToChoose = true;
+    }
+
+    IEnumerator randomizer(int i)
+    {
+        Randomizer.SetGame(i);
         isRandomize = true;
-        random();
+        switch (i)
+        {
+            case 0:
+                randomGame();
+                randomDiff();
+                break;
+            case 1:
+                randomGame();
+                break;
+            case 2:
+                randomDiff();
+                break;
+        }
         yield return new WaitForSeconds(2.3f);
         SetNames(Game.currentGame, GameInfo.difficulty);
         Game.currengGameName = gameName;
@@ -79,17 +101,38 @@ public class CubeManager : MonoBehaviour
         fillTimer = 0;
     }
 
-    void random()
+    void randomGame()
     {
         gameID = Random.Range(1, 5);
-        DiffID = Random.Range(1, 6);
 
-        SetNames(gameID, DiffID);
+        SetNames(gameID, GameInfo.difficulty);
 
         if (isRandomize)
         {
-            Invoke("random", timer);
+            Invoke("randomGame", timer);
             timer += 0.002f;
+        }
+    }
+
+    void randomDiff()
+    {
+        DiffID = Random.Range(1, 6);
+
+        SetNames(Game.currentGame, DiffID);
+
+        if (isRandomize)
+        {
+            Invoke("randomDiff", timer);
+            timer += 0.002f;
+        }
+    }
+
+    public void SilverActivated(int i)
+    {
+        if (isReadyToChoose)
+        {
+            StartCoroutine(randomizer(i));
+            isReadyToChoose = false;
         }
     }
 

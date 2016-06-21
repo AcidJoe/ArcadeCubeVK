@@ -45,7 +45,7 @@ public class CoinInsert : MonoBehaviour
                     EventManager.OnInsert("b");
                     break;
                 case "Token-Silver":
-                    Debug.Log("Silver Inserted");
+                    EventManager.OnInsert("s");
                     break;
                 case "Token-Gold":
                     Debug.Log("Gold Inserted");

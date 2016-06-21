@@ -129,16 +129,24 @@ public class TestMainMenu : MonoBehaviour
     void OnEnable()
     {
         EventManager.bInsert += InsertB_Coin;
+        EventManager.sInsert += InsertS_Coin;
     }
 
     void OnDisable()
     {
         EventManager.bInsert -= InsertB_Coin;
+        EventManager.sInsert -= InsertS_Coin;
     }
 
     void InsertB_Coin()
     {
         Game.player.PayB_coin();
         isBronzeIn = true;
+    }
+
+    void InsertS_Coin()
+    {
+        Game.player.PayS_coin();
+        isSilverIn = true;
     }
 }
