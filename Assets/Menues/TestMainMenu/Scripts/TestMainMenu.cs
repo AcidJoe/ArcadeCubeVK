@@ -27,6 +27,7 @@ public class TestMainMenu : MonoBehaviour
     public GameObject currentToken;
 
     public GameObject tokenbutton_b, tokenbutton_s, tokenbutton_g;
+    public GameObject lightB, lightS, lightG;
 
     public bool isBronzeIn;
     public bool isSilverIn;
@@ -38,6 +39,10 @@ public class TestMainMenu : MonoBehaviour
         isBronzeIn = false;
         isSilverIn = false;
         isGoldIn = false;
+
+        lightB.SetActive(false);
+        lightS.SetActive(false);
+        lightG.SetActive(false);
 
         Tokens(false);
         currentPanel = mainPanel;
@@ -66,6 +71,15 @@ public class TestMainMenu : MonoBehaviour
         {
             Destroy(currentToken);
         }
+
+        if (isBronzeIn && !lightB.activeInHierarchy)
+        {
+            lightB.SetActive(true);
+        }
+        else if (!isBronzeIn)
+        {
+            lightB.SetActive(false);
+        }
     }
 
     public void ChangePanels(int i)
@@ -80,6 +94,7 @@ public class TestMainMenu : MonoBehaviour
                     currentPanel = mainPanel;
                     backButton.SetActive(false);
                     Tokens(false);
+                    isBronzeIn = false;
                 }
                 break;
             case 1:
