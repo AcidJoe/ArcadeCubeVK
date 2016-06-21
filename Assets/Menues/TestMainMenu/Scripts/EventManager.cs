@@ -37,6 +37,10 @@ public class EventManager : MonoBehaviour
                 }
                 break;
             case "g":
+                if (!manager.isGoldIn)
+                {
+                    gInsert();
+                }
                 break;
         }
     }

@@ -33,4 +33,9 @@ public class Profile
     {
         s_tokens--;
     }
+
+    public void PayG_coin()
+    {
+        g_tokens--;
+    }
 }

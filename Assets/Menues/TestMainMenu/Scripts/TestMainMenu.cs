@@ -29,6 +29,9 @@ public class TestMainMenu : MonoBehaviour
     public GameObject tokenbutton_b, tokenbutton_s, tokenbutton_g;
     public GameObject lightB, lightS, lightG;
 
+    public GameObject silverButtons;
+    public GameObject goldButtons;
+
     public bool isBronzeIn;
     public bool isSilverIn;
     public bool isGoldIn;
@@ -39,6 +42,7 @@ public class TestMainMenu : MonoBehaviour
         isBronzeIn = false;
         isSilverIn = false;
         isGoldIn = false;
+        isGoldIn = false;
 
         lightB.SetActive(false);
         lightS.SetActive(false);
@@ -48,6 +52,8 @@ public class TestMainMenu : MonoBehaviour
         currentPanel = mainPanel;
         backButton.SetActive(false);
         playPanel.SetActive(false);
+
+        goldButtons.SetActive(false);
 
         if (Game.player == null)
         {
@@ -80,6 +86,28 @@ public class TestMainMenu : MonoBehaviour
         {
             lightB.SetActive(false);
         }
+        else if(isSilverIn && !lightS.activeInHierarchy)
+        {
+            lightS.SetActive(true);
+        }
+        else if (!isSilverIn)
+        {
+            lightS.SetActive(false);
+        }
+
+
+        if(isGoldIn && !lightG.activeInHierarchy)
+        {
+            lightG.SetActive(true);
+            silverButtons.SetActive(false);
+            goldButtons.SetActive(true);
+        }
+        else if (!isGoldIn)
+        {
+            lightG.SetActive(false);
+            silverButtons.SetActive(true);
+            goldButtons.SetActive(false);
+        }
     }
 
     public void ChangePanels(int i)
@@ -95,6 +123,8 @@ public class TestMainMenu : MonoBehaviour
                     backButton.SetActive(false);
                     Tokens(false);
                     isBronzeIn = false;
+                    isSilverIn = false;
+                    isGoldIn = false;
                 }
                 break;
             case 1:
@@ -130,12 +160,14 @@ public class TestMainMenu : MonoBehaviour
     {
         EventManager.bInsert += InsertB_Coin;
         EventManager.sInsert += InsertS_Coin;
+        EventManager.gInsert += InsertG_Coin;
     }
 
     void OnDisable()
     {
         EventManager.bInsert -= InsertB_Coin;
         EventManager.sInsert -= InsertS_Coin;
+        EventManager.gInsert -= InsertG_Coin;
     }
 
     void InsertB_Coin()
@@ -148,5 +180,11 @@ public class TestMainMenu : MonoBehaviour
     {
         Game.player.PayS_coin();
         isSilverIn = true;
+    }
+
+    void InsertG_Coin()
+    {
+        Game.player.PayG_coin();
+        isGoldIn = true;
     }
 }

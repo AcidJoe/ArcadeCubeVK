@@ -24,7 +24,7 @@ public class CubeManager : MonoBehaviour
 
     bool isReadyToChoose;
 
-    void Start ()
+    void Start()
     {
         isReadyToChoose = false;
         Game.isReady = false;
@@ -32,9 +32,9 @@ public class CubeManager : MonoBehaviour
         isRandomize = false;
         greatingsPanel.SetActive(true);
         randomizerPanel.SetActive(false);
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
         fill.fillAmount = fillTimer / 2.3f;
 
@@ -49,18 +49,20 @@ public class CubeManager : MonoBehaviour
             game.text = Game.currengGameName;
             diff.text = GameInfo.diffName;
         }
-	}
+    }
 
     void OnEnable()
     {
         EventManager.bInsert += BronzeCoin;
         EventManager.sInsert += SilverCoin;
+        EventManager.gInsert += GoldCoin;
     }
 
     void OnDisable()
     {
         EventManager.bInsert -= BronzeCoin;
         EventManager.sInsert -= SilverCoin;
+        EventManager.gInsert -= GoldCoin;
     }
 
     void BronzeCoin()
@@ -73,6 +75,20 @@ public class CubeManager : MonoBehaviour
     void SilverCoin()
     {
         isReadyToChoose = true;
+    }
+
+    void GoldCoin()
+    {
+        StartCoroutine(GoldIn());
+    }
+
+    IEnumerator GoldIn()
+    {
+        Randomizer.SetGame(0);
+        SetNames(Game.currentGame, GameInfo.difficulty);
+        yield return new WaitForSeconds(0.2f);
+        greatingsPanel.SetActive(false);
+        randomizerPanel.SetActive(true);
     }
 
     IEnumerator randomizer(int i)
@@ -134,6 +150,28 @@ public class CubeManager : MonoBehaviour
             StartCoroutine(randomizer(i));
             isReadyToChoose = false;
         }
+    }
+
+    public void GoldButtonGame()
+    {
+        Game.currentGame++;
+        if (Game.currentGame > 5)
+        {
+            Game.currentGame = 1;
+        }
+        SetNames(Game.currentGame, GameInfo.difficulty);
+        Debug.Log(Game.currentGame);
+    }
+
+    public void GoldButtonDiff()
+    {
+        GameInfo.difficulty++;
+        if (GameInfo.difficulty > 6)
+        {
+            GameInfo.difficulty = 1;
+        }
+        SetNames(Game.currentGame, GameInfo.difficulty);
+        Debug.Log(GameInfo.difficulty);
     }
 
     void SetNames(int gid, int did)
