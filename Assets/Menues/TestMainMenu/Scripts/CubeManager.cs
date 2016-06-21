@@ -86,6 +86,10 @@ public class CubeManager : MonoBehaviour
     {
         Randomizer.SetGame(0);
         SetNames(Game.currentGame, GameInfo.difficulty);
+        Game.currengGameName = gameName;
+        GameInfo.diffName = diffName;
+        isRandomize = false;
+        Game.isReady = true;
         yield return new WaitForSeconds(0.2f);
         greatingsPanel.SetActive(false);
         randomizerPanel.SetActive(true);
@@ -160,7 +164,7 @@ public class CubeManager : MonoBehaviour
             Game.currentGame = 1;
         }
         SetNames(Game.currentGame, GameInfo.difficulty);
-        Debug.Log(Game.currentGame);
+        Game.currengGameName = gameName;
     }
 
     public void GoldButtonDiff()
@@ -171,7 +175,8 @@ public class CubeManager : MonoBehaviour
             GameInfo.difficulty = 1;
         }
         SetNames(Game.currentGame, GameInfo.difficulty);
-        Debug.Log(GameInfo.difficulty);
+        GameInfo.diffName = diffName;
+        Randomizer.SetToDiffMan();
     }
 
     void SetNames(int gid, int did)

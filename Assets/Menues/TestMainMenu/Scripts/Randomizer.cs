@@ -33,7 +33,7 @@ public class Randomizer : MonoBehaviour
         {
             Game.currentGame = ranGame;
             GameInfo.difficulty = ranDiff;
-            SetToDiffMan(Game.currentGame);
+            SetToDiffMan();
         }
         else if(i == 1)
         {
@@ -42,11 +42,11 @@ public class Randomizer : MonoBehaviour
         else if(i == 2)
         {
             GameInfo.difficulty = ranDiff;
-            SetToDiffMan(Game.currentGame);
+            SetToDiffMan();
         }
     }
 
-    public static void SetToDiffMan(int i)
+    public static void SetToDiffMan()
     {
         switch (Game.currentGame)
         {
