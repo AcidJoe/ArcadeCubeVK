@@ -49,11 +49,13 @@ public class AsteroidsShip : MonoBehaviour
     void OnEnable()
     {
         AsteroidEvent.crashed += Crash;
+        AsteroidEvent.gameOver += GameOver;
     }
 
     void OnDisable()
     {
         AsteroidEvent.crashed -= Crash;
+        AsteroidEvent.gameOver -= GameOver;
     }
 
     void Crash()
@@ -61,8 +63,14 @@ public class AsteroidsShip : MonoBehaviour
         StartCoroutine(_Crash());
     }
 
+    void GameOver()
+    {
+        Destroy(gameObject);
+    }
+
     IEnumerator _Crash()
     {
+        rb.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         Ship_collider.enabled = false;
         anim.SetBool("isInvisible", true);

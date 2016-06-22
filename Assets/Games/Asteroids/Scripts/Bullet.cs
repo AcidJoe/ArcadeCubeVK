@@ -15,9 +15,6 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ship = GameObject.FindGameObjectWithTag("Player").GetComponent<AsteroidsShip>();
 
-        Debug.Log(rb.gameObject.name);
-        Debug.Log(ship.gameObject.name);
-
         rb.AddForce(ship.transform.up * 600.0f);
     }
 

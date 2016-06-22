@@ -96,6 +96,10 @@ public class AsteroidsManager : MonoBehaviour
     void Crash()
     {
         lives--;
+        if(lives <= 0)
+        {
+            AsteroidEvent.OnGameOver();
+        }
     }
 
     void LevelUp()

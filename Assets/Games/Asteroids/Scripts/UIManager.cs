@@ -13,8 +13,20 @@ public class UIManager : MonoBehaviour
 
     public GameObject live1a, live1ia, live2a, live2ia, live3a, live3ia;
 
+    public GameObject gameOverPanel;
+    public Text winLose;
+    public Text result;
+    public GameObject pressKey;
+
+    bool isReadyToExit;
+
     void Start()
     {
+        pressKey.SetActive(false);
+        winLose.gameObject.SetActive(false);
+        result.gameObject.SetActive(false);
+        isReadyToExit = false;
+        gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<AsteroidsManager>();
         curLives = gameManager.lives;
     }
@@ -44,6 +56,45 @@ public class UIManager : MonoBehaviour
 
             curLives = gameManager.lives;
         }
+
+        if (isReadyToExit)
+        {
+            if (Input.anyKeyDown)
+            {
+                TestSceneManager.BackToMenu();
+            }
+        }
+    }
+
+    void OnEnable()
+    {
+        AsteroidEvent.gameOver += GameOver;
+    }
+
+    void OnDisable()
+    {
+        AsteroidEvent.gameOver -= GameOver;
+    }
+
+    void GameOver()
+    {
+        result.text = score.text;
+        gameOverPanel.SetActive(true);
+        StartCoroutine(delayText());
+        StartCoroutine(waitSomeTime());
+    }
+    IEnumerator delayText()
+    {
+        yield return new WaitForSeconds(0.6f);
+        winLose.gameObject.SetActive(true);
+        result.gameObject.SetActive(true);
+    }
+
+    IEnumerator waitSomeTime()
+    {
+        yield return new WaitForSeconds(2);
+        pressKey.SetActive(true);
+        isReadyToExit = true;
     }
 
     public string currentScore(int i)
