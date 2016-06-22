@@ -9,4 +9,6 @@ public static class GameInfo
     public static string diffName = "Тест";
 
     public static int saveResult;
+
+    public static int extraRound = 0;
 }

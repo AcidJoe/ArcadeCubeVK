@@ -54,7 +54,7 @@ public class AsteroidSmall : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
-            
+            AsteroidEvent.OnCrash();
         }
     }
 }

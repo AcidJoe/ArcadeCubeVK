@@ -36,7 +36,7 @@ public static class DifficultyManager
             #region "Arkanoid"
             case Game.Arkanoid:
                 switch (GameInfo.difficulty)
-                {         
+                {
                     case 1:
                         arkspeed = 10;
                         arkpoints = 1;
@@ -253,6 +253,26 @@ public static class DifficultyManager
                 break;
             case 6:
                 GameInfo.diffName = "Хардкор";
+                break;
+        }
+    }
+
+    public static void ExtraSettings()
+    {
+        switch (currentGame)
+        {
+            case Game.Arkanoid:
+                break;
+            case Game.Asteroids:
+                astroSpeedMod += 0.5f;
+                astroCount = 4;
+                astroPoints += 1;
+                break;
+            case Game.Pong:
+                break;
+            case Game.Snake:
+                break;
+            case Game.Tetris:
                 break;
         }
     }

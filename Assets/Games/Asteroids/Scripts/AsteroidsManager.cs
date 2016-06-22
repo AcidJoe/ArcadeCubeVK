@@ -75,12 +75,35 @@ public class AsteroidsManager : MonoBehaviour
                 DifficultyManager.SetDiffName();
                 TestSceneManager.LoadScene(Game.currentGame);
             }
+
+            else
+            {
+                LevelUp();
+            }
         }
 	}
 
+    void OnEnable()
+    {
+        AsteroidEvent.crashed += Crash;
+    }
+
+    void OnDisable()
+    {
+        AsteroidEvent.crashed -= Crash;
+    }
+
+    void Crash()
+    {
+        lives--;
+    }
+
     void LevelUp()
     {
-
+        GameInfo.extraRound++;
+        DifficultyManager.ExtraSettings();
+        GameInfo.saveResult = score;
+        TestSceneManager.LoadScene(Game.currentGame);
     }
 
     void fillStack(int count)
