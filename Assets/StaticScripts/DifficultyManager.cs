@@ -231,4 +231,29 @@ public static class DifficultyManager
     {
         currentGame = game;
     }
+
+    public static void SetDiffName()
+    {
+        switch (GameInfo.difficulty)
+        {
+            case 1:
+                GameInfo.diffName = "Очень легко";
+                break;
+            case 2:
+                GameInfo.diffName = "Легко";
+                break;
+            case 3:
+                GameInfo.diffName = "Средне";
+                break;
+            case 4:
+                GameInfo.diffName = "Сложно";
+                break;
+            case 5:
+                GameInfo.diffName = "Очень сложно";
+                break;
+            case 6:
+                GameInfo.diffName = "Хардкор";
+                break;
+        }
+    }
 }

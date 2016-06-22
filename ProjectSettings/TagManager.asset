@@ -10,6 +10,8 @@ TagManager:
   - AI
   - UI
   - UIimage
+  - Bullet
+  - Astro
   layers:
   - Default
   - TransparentFX

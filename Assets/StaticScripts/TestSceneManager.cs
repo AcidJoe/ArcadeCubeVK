@@ -30,6 +30,11 @@ public class TestSceneManager : MonoBehaviour
         }
     }
 
+    public static void LoadScene(int sc)
+    {
+        SceneManager.LoadScene(sc);
+    }
+
     public IEnumerator setVars()
     {
         Randomizer.SetToDiffMan();
