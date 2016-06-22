@@ -15,18 +15,29 @@ public class PongManager : MonoBehaviour
     public Text pscore;
     public Text aiscore;
 
+    bool isFinished;
+
+    public GameObject gameOverPanel;
+    public Text winLose;
+    public Text result;
+    public GameObject pressKey;
+
+    bool isReadyToExit;
+
 	void Start ()
     {
+        pressKey.SetActive(false);
+        winLose.gameObject.SetActive(false);
+        result.gameObject.SetActive(false);
+        isReadyToExit = false;
+        gameOverPanel.SetActive(false);
+        isFinished = false;
         playerScore = 0;
         AIscore = 0;
         dir = 0;
         default_speed = DifficultyManager.pongBallSpeed;
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<PongBall>();
 
-        if(DifficultyManager.pongBallSpeed == 0)
-        {
-            default_speed = 10;
-        } 
         StartCoroutine(startGame());
 	}
 	
@@ -35,7 +46,56 @@ public class PongManager : MonoBehaviour
         pscore.text = playerScore.ToString();
         aiscore.text = AIscore.ToString();
         Goal();
+
+        if(playerScore >= 11 || AIscore >= 11 && !isFinished)
+        {
+            if(Mathf.Abs(playerScore - AIscore) >= 2)
+            {
+                isFinished = false;
+                GameOver();
+                StartCoroutine(delayText());
+                StartCoroutine(waitSomeTime());
+            }
+        }
+
+        if (isReadyToExit)
+        {
+            if (Input.anyKeyDown)
+            {
+                TestSceneManager.BackToMenu();
+            }
+        }
 	}
+
+    void GameOver()
+    {
+        ball.speed *= 0;
+
+        if(playerScore > AIscore)
+        {
+            winLose.text = "ВЫ ПОБЕДИЛИ !";
+        }
+        else
+        {
+            winLose.text = "ВЫ ПРОИГРАЛИ !";
+        }
+
+        result.text = aiscore.text + " - " + pscore.text;
+        gameOverPanel.SetActive(true);
+    }
+    IEnumerator delayText()
+    {
+        yield return new WaitForSeconds(0.6f);
+        winLose.gameObject.SetActive(true);
+        result.gameObject.SetActive(true);
+    }
+
+    IEnumerator waitSomeTime()
+    {
+        yield return new WaitForSeconds(2);
+        pressKey.SetActive(true);
+        isReadyToExit = true;
+    }
 
     public void Goal()
     {

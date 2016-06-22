@@ -104,6 +104,7 @@ MonoBehaviour:
   origin: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   isActive: 0
+  isInPlace: 0
 --- !u!1001 &22304480
 Prefab:
   m_ObjectHideFlags: 0
@@ -1595,6 +1596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: b9fa4f6a70aa8674c9415e5725679a90, type: 3}
+  _material: {fileID: 0}
   verts_force: 0
   verts_force_2: 0
   contrast: 0
@@ -1852,6 +1854,7 @@ MonoBehaviour:
   origin: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   isActive: 0
+  isInPlace: 0
 --- !u!1 &779293707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,7 +4149,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578107144}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e1565f174e760da49bd20a8059918474, type: 2}
   m_CullingMode: 0
@@ -4883,6 +4886,7 @@ MonoBehaviour:
   origin: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   isActive: 0
+  isInPlace: 0
 --- !u!1 &1824687592
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5087,7 @@ MonoBehaviour:
   diffName: 
   timer: 0.05
   isRandomize: 0
+  isReadyToChoose: 0
 --- !u!1 &1869020437
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,7 +6149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2132488354
 RectTransform:
   m_ObjectHideFlags: 0

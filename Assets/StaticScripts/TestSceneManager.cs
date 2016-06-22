@@ -17,7 +17,7 @@ public class TestSceneManager : MonoBehaviour
         }
 	}
 
-    void BackToMenu()
+    public static void BackToMenu()
     {
         SceneManager.LoadScene(6);
     }
