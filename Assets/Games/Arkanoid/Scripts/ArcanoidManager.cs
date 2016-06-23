@@ -49,6 +49,10 @@ public class ArcanoidManager : MonoBehaviour
 
     public void GameOver()
     {
+        foreach(GameObject b in bricks)
+        {
+            b.SetActive(false);
+        }
         ball.transform.position = Vector3.zero;
         ball.speed = 0;
         ball.isActivate = true;
