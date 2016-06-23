@@ -65,6 +65,7 @@ public class SnakeManager : MonoBehaviour
             DifficultyManager.ExtraSettings();
         }
 
+        Input.ResetInputAxes();
         snake.spawnTime = DifficultyManager.snakespeed;
         collectedFood = 0;
     }
