@@ -262,6 +262,8 @@ public static class DifficultyManager
         switch (currentGame)
         {
             case Game.Arkanoid:
+                arkspeed += 5;
+                arkpoints += 1;
                 break;
             case Game.Asteroids:
                 astroSpeedMod += 0.5f;

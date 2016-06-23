@@ -28,6 +28,7 @@ public class AsteroidsManager : MonoBehaviour
     void Start()
     {
         score = GameInfo.saveResult;
+        lives = GameInfo.saveLives;
 
         spawned = false;
         isStart = false;
@@ -72,6 +73,7 @@ public class AsteroidsManager : MonoBehaviour
                 GameInfo.difficulty++;
                 DifficultyManager.Settings();
                 GameInfo.saveResult = score;
+                GameInfo.saveLives = lives;
                 DifficultyManager.SetDiffName();
                 TestSceneManager.LoadScene(Game.currentGame);
             }
@@ -107,6 +109,7 @@ public class AsteroidsManager : MonoBehaviour
         GameInfo.extraRound++;
         DifficultyManager.ExtraSettings();
         GameInfo.saveResult = score;
+        GameInfo.saveLives = lives;
         TestSceneManager.LoadScene(Game.currentGame);
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - UIimage
   - Bullet
   - Astro
+  - Brick
   layers:
   - Default
   - TransparentFX

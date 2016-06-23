@@ -13,10 +13,21 @@ public class ArkanoidUI : MonoBehaviour
 
     public GameObject live1a, live1ia, live2a, live2ia, live3a, live3ia;
 
-	void Start ()
+    public GameObject gameOverPanel;
+    public Text winLose;
+    public Text result;
+    public GameObject pressKey;
+
+    bool isReadyToExit;
+
+    void Start ()
     {
+        pressKey.SetActive(false);
+        winLose.gameObject.SetActive(false);
+        result.gameObject.SetActive(false);
+        isReadyToExit = false;
+        gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<ArcanoidManager>();
-        curLives = gameManager.lives;
 	}
 	
 	void Update ()
@@ -41,10 +52,44 @@ public class ArkanoidUI : MonoBehaviour
                 live1a.SetActive(false);
                 live1ia.SetActive(true);
             }
+            else if(gameManager.lives == 0 && !gameOverPanel.activeInHierarchy)
+            {
+                GameOver();
+                gameManager.GameOver();
+            }
 
             curLives = gameManager.lives;
         }
-	}
+
+        if (isReadyToExit)
+        {
+            if (Input.anyKeyDown)
+            {
+                TestSceneManager.BackToMenu();
+            }
+        }
+    }
+
+    void GameOver()
+    {
+        result.text = score.text;
+        gameOverPanel.SetActive(true);
+        StartCoroutine(delayText());
+        StartCoroutine(waitSomeTime());
+    }
+    IEnumerator delayText()
+    {
+        yield return new WaitForSeconds(0.6f);
+        winLose.gameObject.SetActive(true);
+        result.gameObject.SetActive(true);
+    }
+
+    IEnumerator waitSomeTime()
+    {
+        yield return new WaitForSeconds(2);
+        pressKey.SetActive(true);
+        isReadyToExit = true;
+    }
 
     public string currentScore(int i)
     {
