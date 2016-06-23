@@ -181,7 +181,7 @@ public static class DifficultyManager
                         tetrispoints = 4;
                         break;
                     case 6:
-                        tetrisfallspeed = 0.08f;
+                        tetrisfallspeed = 0.14f;
                         tetrispoints = 5;
                         break;
                 }
@@ -275,6 +275,8 @@ public static class DifficultyManager
             case Game.Snake:
                 break;
             case Game.Tetris:
+                tetrisfallspeed -= 0.02f;
+                tetrispoints++;
                 break;
         }
     }

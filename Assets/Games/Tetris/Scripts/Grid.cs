@@ -37,6 +37,7 @@ public class Grid : MonoBehaviour
             grid[x, y] = null;
         }
 
+        manager.lineCount++;
         manager.score += DifficultyManager.tetrispoints * multiplier;
     }
 

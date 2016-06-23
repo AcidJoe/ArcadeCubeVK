@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Group : MonoBehaviour
 {
-    float lastFall = 0;
+    //float lastFall = 0;
     float falltime;
     float fallDefault;
 
@@ -18,7 +18,7 @@ public class Group : MonoBehaviour
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
-            //ToDo GameOver
+            TetrisEvents.OnGameOver();
             Destroy(gameObject);
         }
 
