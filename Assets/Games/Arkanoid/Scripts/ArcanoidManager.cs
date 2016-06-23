@@ -51,7 +51,7 @@ public class ArcanoidManager : MonoBehaviour
     {
         foreach(GameObject b in bricks)
         {
-            b.SetActive(false);
+            b.transform.position = new Vector3(1000, 1000, -50000);
         }
         ball.transform.position = Vector3.zero;
         ball.speed = 0;
