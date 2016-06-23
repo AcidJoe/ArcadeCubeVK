@@ -19,7 +19,6 @@ public class Snake : MonoBehaviour
     Vector3 moveFwd;
     Vector3 prevPos;
     Vector3 nextPos;
-    Quaternion prevRot;
 
     public enum State { up, down, left, right }
 
@@ -91,7 +90,6 @@ public class Snake : MonoBehaviour
     {
         isChosen = false;
         prevPos = transform.position;
-        prevRot = transform.rotation;
         nextPos = transform.position += moveFwd;
         if (nextPos.x > 15.0f || nextPos.x < -15.0f 
             || nextPos.y > 10.0f || nextPos.y < -10.0f)
