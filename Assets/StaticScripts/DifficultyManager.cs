@@ -70,7 +70,7 @@ public static class DifficultyManager
                 {
                     case 1:
                         snakespeed = 0.5f;
-                        snakepoints = 2;
+                        snakepoints = 1;
                         break;
                     case 2:
                         snakespeed = 0.4f;
@@ -82,15 +82,15 @@ public static class DifficultyManager
                         break;
                     case 4:
                         snakespeed = 0.2f;
-                        snakepoints = 2;
+                        snakepoints = 3;
                         break;
                     case 5:
                         snakespeed = 0.1f;
-                        snakepoints = 2;
+                        snakepoints = 3;
                         break;
                     case 6:
                         snakespeed = 0.05f;
-                        snakepoints = 2;
+                        snakepoints = 4;
                         break;
                 }
                 break;
@@ -273,6 +273,8 @@ public static class DifficultyManager
             case Game.Pong:
                 break;
             case Game.Snake:
+                snakespeed -= 0.01f;
+                snakepoints++;
                 break;
             case Game.Tetris:
                 tetrisfallspeed -= 0.02f;

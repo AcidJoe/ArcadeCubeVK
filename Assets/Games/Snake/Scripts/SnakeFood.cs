@@ -18,8 +18,8 @@ public class SnakeFood : MonoBehaviour
         {
             col.GetComponent<Snake>().lenght += 1;
             manager.score += DifficultyManager.snakepoints;
+            manager.collectedFood++;
         }
-
         manager.food.Clear();
         Destroy(gameObject);
     }
