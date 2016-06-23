@@ -65,8 +65,11 @@ public class SnakeManager : MonoBehaviour
             DifficultyManager.ExtraSettings();
         }
 
-        Input.ResetInputAxes();
         snake.spawnTime = DifficultyManager.snakespeed;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            snake.spawnTime /= 3;
+        }
         collectedFood = 0;
     }
 
