@@ -60,6 +60,6 @@ public class ArkCell
         Xpos = x;
         Ypos = y;
 
-        pos = new Vector2(Xpos, Ypos);
+        pos = new Vector3(Xpos, Ypos, 100);
     }
 }

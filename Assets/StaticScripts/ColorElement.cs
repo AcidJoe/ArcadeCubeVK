@@ -12,7 +12,7 @@ public class ColorElement : MonoBehaviour
     SpriteRenderer _renderer;
 
     Color32 color;
-    bool isPainted;
+    public bool isPainted;
 
 	void Start ()
     {
@@ -128,5 +128,11 @@ public class ColorElement : MonoBehaviour
             _renderer.color = color;
             isPainted = true;
         }
+    }
+
+    public void Repaint()
+    {
+        CheckDiff();
+        Paint();
     }
 }

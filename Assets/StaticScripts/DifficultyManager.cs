@@ -36,7 +36,7 @@ public static class DifficultyManager
             #region "Arkanoid"
             case Game.Arkanoid:
                 switch (GameInfo.difficulty)
-                {         
+                {
                     case 1:
                         arkspeed = 10;
                         arkpoints = 1;
@@ -70,7 +70,7 @@ public static class DifficultyManager
                 {
                     case 1:
                         snakespeed = 0.5f;
-                        snakepoints = 2;
+                        snakepoints = 1;
                         break;
                     case 2:
                         snakespeed = 0.4f;
@@ -82,15 +82,15 @@ public static class DifficultyManager
                         break;
                     case 4:
                         snakespeed = 0.2f;
-                        snakepoints = 2;
+                        snakepoints = 3;
                         break;
                     case 5:
                         snakespeed = 0.1f;
-                        snakepoints = 2;
+                        snakepoints = 3;
                         break;
                     case 6:
                         snakespeed = 0.05f;
-                        snakepoints = 2;
+                        snakepoints = 4;
                         break;
                 }
                 break;
@@ -181,7 +181,7 @@ public static class DifficultyManager
                         tetrispoints = 4;
                         break;
                     case 6:
-                        tetrisfallspeed = 0.08f;
+                        tetrisfallspeed = 0.14f;
                         tetrispoints = 5;
                         break;
                 }
@@ -230,5 +230,56 @@ public static class DifficultyManager
     public static void SetGame(Game game)
     {
         currentGame = game;
+    }
+
+    public static void SetDiffName()
+    {
+        switch (GameInfo.difficulty)
+        {
+            case 1:
+                GameInfo.diffName = "Очень легко";
+                break;
+            case 2:
+                GameInfo.diffName = "Легко";
+                break;
+            case 3:
+                GameInfo.diffName = "Средне";
+                break;
+            case 4:
+                GameInfo.diffName = "Сложно";
+                break;
+            case 5:
+                GameInfo.diffName = "Очень сложно";
+                break;
+            case 6:
+                GameInfo.diffName = "Хардкор";
+                break;
+        }
+    }
+
+    public static void ExtraSettings()
+    {
+        switch (currentGame)
+        {
+            case Game.Arkanoid:
+                arkspeed += 5;
+                arkpoints += 1;
+                break;
+            case Game.Asteroids:
+                astroSpeedMod += 0.5f;
+                astroCount = 4;
+                astroPoints += 1;
+                break;
+            case Game.Pong:
+                break;
+            case Game.Snake:
+                snakespeed -= 0.01f;
+                snakepoints++;
+                break;
+            case Game.Tetris:
+                tetrisfallspeed -= 0.02f;
+                tetrispoints++;
+                break;
+        }
     }
 }

@@ -15,12 +15,17 @@ public class AsteroidsShip : MonoBehaviour
     public GameObject bullet;
 
     public PolygonCollider2D Ship_collider;
+    public Animator anim;
+
+    public bool outOfLife;
 
     void Start()
     {
+        outOfLife = false;
         cooldown = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         Ship_collider = GetComponent<PolygonCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,6 +44,39 @@ public class AsteroidsShip : MonoBehaviour
         Thrust();
         _Rotation();
         Fire();
+    }
+
+    void OnEnable()
+    {
+        AsteroidEvent.crashed += Crash;
+        AsteroidEvent.gameOver += GameOver;
+    }
+
+    void OnDisable()
+    {
+        AsteroidEvent.crashed -= Crash;
+        AsteroidEvent.gameOver -= GameOver;
+    }
+
+    void Crash()
+    {
+        StartCoroutine(_Crash());
+    }
+
+    void GameOver()
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator _Crash()
+    {
+        rb.velocity = Vector3.zero;
+        transform.position = Vector3.zero;
+        Ship_collider.enabled = false;
+        anim.SetBool("isInvisible", true);
+        yield return new WaitForSeconds(1.3f);
+        anim.SetBool("isInvisible", false);
+        Ship_collider.enabled = true;
     }
 
     void Thrust()

@@ -11,7 +11,7 @@ public class ArcanoidLevelManager : MonoBehaviour
     public GameObject brick;
     public GameObject weekBrick;
 
-    bool isLevelCreated;
+    public bool isLevelCreated;
 
 	void Start ()
     {

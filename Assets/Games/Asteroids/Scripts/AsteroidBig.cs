@@ -86,7 +86,7 @@ public class AsteroidBig : MonoBehaviour
 
         if(col.gameObject.tag == "Player")
         {
-            
+            AsteroidEvent.OnCrash();
         }
     }
 }

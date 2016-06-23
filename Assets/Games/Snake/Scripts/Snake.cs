@@ -8,6 +8,8 @@ public class Snake : MonoBehaviour
     public float spawnTime;
     public int lenght;
 
+    public SnakeUI ui;
+
     public bool isStart;
 
     SnakePoolManager spm;
@@ -17,7 +19,6 @@ public class Snake : MonoBehaviour
     Vector3 moveFwd;
     Vector3 prevPos;
     Vector3 nextPos;
-    Quaternion prevRot;
 
     public enum State { up, down, left, right }
 
@@ -27,6 +28,7 @@ public class Snake : MonoBehaviour
 
     void Start ()
     {
+        ui = FindObjectOfType<SnakeUI>();
         isStart = false;
         spm = FindObjectOfType<SnakePoolManager>();
         spawnTime = DifficultyManager.snakespeed;
@@ -88,23 +90,11 @@ public class Snake : MonoBehaviour
     {
         isChosen = false;
         prevPos = transform.position;
-        prevRot = transform.rotation;
         nextPos = transform.position += moveFwd;
-        if (nextPos.x > 15.0f)
+        if (nextPos.x > 15.0f || nextPos.x < -15.0f 
+            || nextPos.y > 10.0f || nextPos.y < -10.0f)
         {
-            nextPos.x = -15.0f;
-        }
-        if (nextPos.x < -15.0f)
-        {
-            nextPos.x = 15.0f;
-        }
-        if (nextPos.y > 10.0f)
-        {
-            nextPos.y = -10.0f;
-        }
-        if (nextPos.y < -10.0f)
-        {
-            nextPos.y = 10.0f;
+            GameOver();
         }
 
         transform.position = nextPos;
@@ -144,5 +134,19 @@ public class Snake : MonoBehaviour
                 break;
         }
         currentState = state;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Tail")
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        spawnTime *= 0;
+        ui.GameOver();
     }
 }

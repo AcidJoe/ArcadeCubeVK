@@ -39,6 +39,10 @@ public class TestMainMenu : MonoBehaviour
 
     void Start()
     {
+        GameInfo.saveResult = 0;
+        GameInfo.saveLives = 4;
+        GameInfo.extraRound = 0;
+
         isBronzeIn = false;
         isSilverIn = false;
         isGoldIn = false;

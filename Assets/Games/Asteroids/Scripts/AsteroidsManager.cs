@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AsteroidsManager : MonoBehaviour
 {
     public int lives = 4;
-    public int score = 0;
+    public int score;
 
     public Vector3 spawn_point_1;
     public Vector3 spawn_point_2;
@@ -23,8 +23,13 @@ public class AsteroidsManager : MonoBehaviour
     public int astroCount;
     public Stack<int> points;
 
+    public GameObject[] astros;
+
     void Start()
     {
+        score = GameInfo.saveResult;
+        lives = GameInfo.saveLives;
+
         spawned = false;
         isStart = false;
         points = new Stack<int>();
@@ -58,7 +63,55 @@ public class AsteroidsManager : MonoBehaviour
             Spawn();
             spawned = true;
         }
+
+        astros = GameObject.FindGameObjectsWithTag("Astro");
+
+        if(astros.Length <= 0 && spawned)
+        {
+            if(GameInfo.difficulty < 6)
+            {
+                GameInfo.difficulty++;
+                DifficultyManager.Settings();
+                GameInfo.saveResult = score;
+                GameInfo.saveLives = lives;
+                DifficultyManager.SetDiffName();
+                TestSceneManager.LoadScene(Game.currentGame);
+            }
+
+            else
+            {
+                LevelUp();
+            }
+        }
 	}
+
+    void OnEnable()
+    {
+        AsteroidEvent.crashed += Crash;
+    }
+
+    void OnDisable()
+    {
+        AsteroidEvent.crashed -= Crash;
+    }
+
+    void Crash()
+    {
+        lives--;
+        if(lives <= 0)
+        {
+            AsteroidEvent.OnGameOver();
+        }
+    }
+
+    void LevelUp()
+    {
+        GameInfo.extraRound++;
+        DifficultyManager.ExtraSettings();
+        GameInfo.saveResult = score;
+        GameInfo.saveLives = lives;
+        TestSceneManager.LoadScene(Game.currentGame);
+    }
 
     void fillStack(int count)
     {
