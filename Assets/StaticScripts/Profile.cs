@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Profile
 {
-    public string name;
+    public string id;
+    public string _name;
+    public string photo;
 
     public int b_tokens;
     public int s_tokens;
@@ -14,7 +16,7 @@ public class Profile
 
     public Profile(string n)
     {
-        name = n;
+        _name = n;
 
         b_tokens = 50;
         s_tokens = 50;
@@ -24,9 +26,22 @@ public class Profile
         exp = 0;
     }
 
+    public Profile(string n, string ph, string _id, int silv, int gold, int lv, int ex)
+    {
+        _name = n;
+        photo = ph;
+        id = _id;
+
+        s_tokens = silv;
+        g_tokens = gold;
+
+        lvl = lv;
+        exp = ex;
+    }
+
     public void PayB_coin()
     {
-        b_tokens--;
+
     }
 
     public void PayS_coin()

@@ -64,14 +64,14 @@ public class TestMainMenu : MonoBehaviour
             Game.player = new Profile("Тестер");
         }
 
-        _name.text = Game.player.name;
+        _name.text = Game.player._name;
     }
 
     void Update()
     {
         lvl.text = "Уровень " + Game.player.lvl.ToString();
         exp.text = ExpManager.Calculate(Game.player.exp).ToString() + "/" + ExpManager.expToNext;
-        btoken.text = Game.player.b_tokens.ToString();
+        btoken.text = "∞";
         stoken.text = Game.player.s_tokens.ToString();
         gtoken.text = Game.player.g_tokens.ToString();
         progressBar.fillAmount = (float)ExpManager.Calculate(Game.player.exp) / (float)ExpManager.expToNext;
