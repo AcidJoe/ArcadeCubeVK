@@ -62,20 +62,24 @@ public class ArcanoidManager : MonoBehaviour
     {
         if (GameInfo.difficulty < 6)
         {
+            EventManager.OnGameEnd();
             GameInfo.difficulty++;
             DifficultyManager.Settings();
             GameInfo.saveResult = score;
             GameInfo.saveLives = lives;
             DifficultyManager.SetDiffName();
             TestSceneManager.LoadScene(Game.currentGame);
+            EventManager.OnStartGame();
         }
         else
         {
+            EventManager.OnGameEnd();
             GameInfo.extraRound++;
             DifficultyManager.ExtraSettings();
             GameInfo.saveResult = score;
             GameInfo.saveLives = lives;
             TestSceneManager.LoadScene(Game.currentGame);
+            EventManager.OnStartGame();
         }
     }
 }
