@@ -62,7 +62,7 @@ public class PongManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                TestSceneManager.BackToMenu();
+                EventManager.OnMenuBack();
             }
         }
 	}

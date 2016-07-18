@@ -5,19 +5,30 @@ public class Spawner_Tetris : MonoBehaviour
 {
     public GameObject[] shapes;
 
+    public int next;
+
     void Start ()
     {
-        spawnNext();
+        spawnFirst();
     }
 
     public void spawnNext()
     {
-        // Random Index
+        Instantiate(shapes[next],
+                    transform.position,
+                    Quaternion.identity);
+
+        next = Random.Range(0, shapes.Length);
+    }
+
+    public void spawnFirst()
+    {
         int i = Random.Range(0, shapes.Length);
 
-        // Spawn Group at current Position
         Instantiate(shapes[i],
                     transform.position,
                     Quaternion.identity);
+
+        next = Random.Range(0, shapes.Length);
     }
 }

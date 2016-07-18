@@ -36,16 +36,22 @@ public class TestMainMenu : MonoBehaviour
     public bool isSilverIn;
     public bool isGoldIn;
 
+    public SocialManager sm;
 
     void Start()
     {
+        GameInfo.difficulty = 0;
+        EventManager.OnGameEnd();
+        GameInfo.isPlay = false;
+
+        sm = FindObjectOfType<SocialManager>();
+
         GameInfo.saveResult = 0;
         GameInfo.saveLives = 4;
         GameInfo.extraRound = 0;
 
         isBronzeIn = false;
         isSilverIn = false;
-        isGoldIn = false;
         isGoldIn = false;
 
         lightB.SetActive(false);
@@ -64,18 +70,19 @@ public class TestMainMenu : MonoBehaviour
             Game.player = new Profile("Тестер");
         }
 
-        _name.text = Game.player.name;
+        _name.text = Game.player._name;
     }
 
     void Update()
     {
         lvl.text = "Уровень " + Game.player.lvl.ToString();
-        exp.text = ExpManager.Calculate(Game.player.exp).ToString() + "/" + ExpManager.expToNext;
-        btoken.text = Game.player.b_tokens.ToString();
+        exp.text = Game.player.exp.ToString() + "/" + Game.player.exp_to_next.ToString();
         stoken.text = Game.player.s_tokens.ToString();
         gtoken.text = Game.player.g_tokens.ToString();
-        progressBar.fillAmount = (float)ExpManager.Calculate(Game.player.exp) / (float)ExpManager.expToNext;
+        progressBar.fillAmount = Game.player.exp / (float)Game.player.exp_to_next;
         photo.sprite = sprite;
+
+        ChekTokens();
 
         if(currentToken && Input.GetMouseButtonUp(0))
         {
@@ -111,6 +118,18 @@ public class TestMainMenu : MonoBehaviour
             lightG.SetActive(false);
             silverButtons.SetActive(true);
             goldButtons.SetActive(false);
+        }
+    }
+
+    void ChekTokens()
+    {
+        if(Game.player.s_tokens <= 0)
+        {
+            tokenbutton_s.SetActive(false);
+        }
+        else if(Game.player.g_tokens <= 0)
+        {
+            tokenbutton_g.SetActive(false);
         }
     }
 

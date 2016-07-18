@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &156878328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &226843763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &285175873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &285175874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &353083441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +582,7 @@ Transform:
   - {fileID: 319829140}
   - {fileID: 1727895114}
   - {fileID: 532355507}
+  - {fileID: 1364590548}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &532355506
@@ -773,6 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &1126612663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,6 +968,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1364590547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1364590548}
+  - 114: {fileID: 1364590549}
+  m_Layer: 0
+  m_Name: SocialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1364590548
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364590547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 392420791}
+  m_RootOrder: 3
+--- !u!114 &1364590549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364590547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7732b18c03d4bf40b776730c8307f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ti: {fileID: 0}
+  uid: 
+  photo: 
+  _name: Default
+  _profile: https://www.acidjoe.ru/Games/ACTest/PHP/profile.php
+  _update: https://www.acidjoe.ru/Games/ACTest/PHP/update.php
+  isHaveName: 0
+  isHaveID: 0
+  isHavePhoto: 0
 --- !u!1 &1464756665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &1536944248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,6 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &1718666226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,6 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5bbc672ef52c543b2eb1083b41cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPainted: 0
 --- !u!114 &2138835319
 MonoBehaviour:
   m_ObjectHideFlags: 0

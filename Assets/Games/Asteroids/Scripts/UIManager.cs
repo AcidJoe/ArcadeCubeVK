@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        curLives = 4;
         pressKey.SetActive(false);
         winLose.gameObject.SetActive(false);
         result.gameObject.SetActive(false);
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                TestSceneManager.BackToMenu();
+                EventManager.OnMenuBack();
             }
         }
     }

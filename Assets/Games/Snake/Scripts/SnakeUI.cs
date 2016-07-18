@@ -35,7 +35,7 @@ public class SnakeUI : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                TestSceneManager.BackToMenu();
+                EventManager.OnMenuBack();
             }
         }
     }

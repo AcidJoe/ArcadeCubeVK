@@ -28,9 +28,11 @@ public class TetrisManager : MonoBehaviour
     {
         if (GameInfo.difficulty < 6)
         {
+            EventManager.OnGameEnd();
             GameInfo.difficulty++;
             DifficultyManager.Settings();
             DifficultyManager.SetDiffName();
+            EventManager.OnStartGame();
 
             foreach (ColorElement c in colorElements)
             {
@@ -41,8 +43,10 @@ public class TetrisManager : MonoBehaviour
 
         else
         {
+            EventManager.OnGameEnd();
             GameInfo.extraRound++;
             DifficultyManager.ExtraSettings();
+            EventManager.OnStartGame();
         }
 
         lineCount = 0;

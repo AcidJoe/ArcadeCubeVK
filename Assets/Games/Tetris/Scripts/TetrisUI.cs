@@ -14,6 +14,10 @@ public class TetrisUI : MonoBehaviour
     public Text result;
     public GameObject pressKey;
 
+    public Spawner_Tetris spawner;
+
+    public GameObject[] nextShapes;
+
     bool isReadyToExit;
 
     void Start()
@@ -24,10 +28,13 @@ public class TetrisUI : MonoBehaviour
         isReadyToExit = false;
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<TetrisManager>();
+        spawner = FindObjectOfType<Spawner_Tetris>();
     }
 
     void Update()
     {
+        CheckNext();
+
         score.text = currentScore(gameManager.score);
         diff.text = GameInfo.diffName;
 
@@ -35,7 +42,28 @@ public class TetrisUI : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                TestSceneManager.BackToMenu();
+                EventManager.OnMenuBack();
+            }
+        }
+    }
+
+    void CheckNext()
+    {
+        for(int i = 0; i < 7; i++)
+        {
+            if(i == spawner.next)
+            {
+                nextShapes[i].SetActive(true);
+                ColorElement[] ce = nextShapes[i].GetComponentsInChildren<ColorElement>();
+                foreach(ColorElement c in ce)
+                {
+                    c.isPainted = false;
+                    c.Repaint();
+                }
+            }
+            else
+            {
+                nextShapes[i].SetActive(false);
             }
         }
     }

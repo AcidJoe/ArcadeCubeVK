@@ -24,6 +24,9 @@ public class TestSceneManager : MonoBehaviour
 
     public void LoadLevel()
     {
+        EventManager.OnStartGame();
+        GameInfo.oldExp = Game.player.exp;
+        GameInfo.oldLvl = Game.player.lvl;
         if (Game.isReady)
         {
             StartCoroutine(setVars());
