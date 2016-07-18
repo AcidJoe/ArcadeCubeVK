@@ -627,6 +627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 1718666226}
   diff: {fileID: 285175874}
+  info: {fileID: 1743163426}
   curLives: 0
   live1a: {fileID: 2138835316}
   live1ia: {fileID: 1536944245}
@@ -1009,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ti: {fileID: 0}
-  uid: 
+  uid: 0
   photo: 
   _name: Default
   _profile: https://www.acidjoe.ru/Games/ACTest/PHP/profile.php
@@ -1051,6 +1052,7 @@ RectTransform:
   - {fileID: 285175871}
   - {fileID: 935251046}
   - {fileID: 150929362}
+  - {fileID: 1743163425}
   m_Father: {fileID: 2110004566}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -1338,6 +1340,80 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 466410, guid: 2c6698ae7b795c24a80b915f380d0655, type: 2}
   m_PrefabInternal: {fileID: 1727895113}
+--- !u!1 &1743163424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1743163425}
+  - 222: {fileID: 1743163427}
+  - 114: {fileID: 1743163426}
+  m_Layer: 5
+  m_Name: Info
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1743163425
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1743163424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1464756666}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -355, y: -268}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1743163426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1743163424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6781522, g: 0.6014814, b: 0.9191176, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: d6670733972eed045bebbdc236bfdb45, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Astro.count =
+--- !u!222 &1743163427
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1743163424}
 --- !u!1 &1749312684 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 193910, guid: 3f6449cca8f23be44a1d6e3ba2c7daaf, type: 2}

@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public Text score;
     public Text diff;
 
+    //Это для тестов
+    public Text info;
+    //----------------
+
     public int curLives;
 
     public GameObject live1a, live1ia, live2a, live2ia, live3a, live3ia;
@@ -22,20 +26,21 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        curLives = 4;
+        curLives = GameInfo.saveLives;
         pressKey.SetActive(false);
         winLose.gameObject.SetActive(false);
         result.gameObject.SetActive(false);
         isReadyToExit = false;
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<AsteroidsManager>();
-        curLives = gameManager.lives;
     }
 
     void Update()
     {
         score.text = currentScore(gameManager.score);
         diff.text = GameInfo.diffName;
+
+        info.text = "Astro.count = " + gameManager.astros.Length.ToString();
 
         if (curLives != gameManager.lives)
         {
