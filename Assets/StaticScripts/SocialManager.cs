@@ -53,7 +53,6 @@ public class SocialManager: MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("method", "profile");
         form.AddField("uid", uid);
-        form.AddField("diff", GameInfo.difficulty);
         WWW www = new WWW(_profile, form);
         yield return www;
         var _result = JSON.Parse(www.text);
@@ -65,9 +64,13 @@ public class SocialManager: MonoBehaviour
             _result[0]["gold"].AsInt,
             _result[0]["lvl"].AsInt,
             _result[0]["exp"].AsInt,
-            _result[0]["exp_next"].AsInt);
+            _result[0]["exp_next"].AsInt,
+            _result[0]["tutorial"].AsInt);
 
-        SceneManager.LoadScene(6);
+        if(Game.player.isEndTutorial == 1)
+            SceneManager.LoadScene(6);
+        else
+            SceneManager.LoadScene(7);
     }
 
     public IEnumerator _Get_Profile()
@@ -87,7 +90,8 @@ public class SocialManager: MonoBehaviour
             _result[0]["gold"].AsInt,
             _result[0]["lvl"].AsInt,
             _result[0]["exp"].AsInt,
-            _result[0]["exp_next"].AsInt);
+            _result[0]["exp_next"].AsInt,
+            _result[0]["tutorial"].AsInt);
 
         SceneManager.LoadScene(6);
     }
@@ -102,6 +106,30 @@ public class SocialManager: MonoBehaviour
         var _result = JSON.Parse(www.text);
         Game.player.s_tokens = _result[0]["silver"].AsInt;
         Game.player.g_tokens = _result[0]["gold"].AsInt;
+    }
+
+    public IEnumerator CheckName(string s)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("method", "checkName");
+        form.AddField("name", s);
+        WWW www = new WWW(_update, form);
+        yield return www;
+        string _result = www.text;
+        FindObjectOfType<Tutorial>().isCheked = true;
+        if (_result == "")
+        {
+            FindObjectOfType<Tutorial>().isValid = true;
+        }
+        else
+        {
+            FindObjectOfType<Tutorial>().isValid = false;
+        }
+    }
+
+    public void startCheck(string s)
+    {
+        StartCoroutine(CheckName(s));
     }
 
     public void _start()

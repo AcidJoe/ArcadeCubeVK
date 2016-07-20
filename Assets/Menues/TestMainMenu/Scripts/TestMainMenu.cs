@@ -8,7 +8,6 @@ public class TestMainMenu : MonoBehaviour
     public Text lvl;
     public Text exp;
 
-    public Text btoken;
     public Text stoken;
     public Text gtoken;
 
@@ -35,6 +34,8 @@ public class TestMainMenu : MonoBehaviour
     public bool isBronzeIn;
     public bool isSilverIn;
     public bool isGoldIn;
+
+    public bool isTutorialActive = false;
 
     public SocialManager sm;
 
@@ -75,6 +76,11 @@ public class TestMainMenu : MonoBehaviour
 
     void Update()
     {
+        if(Game.player.isEndTutorial != 1)
+        {
+            isTutorialActive = true;
+        }
+
         lvl.text = "Уровень " + Game.player.lvl.ToString();
         exp.text = Game.player.exp.ToString() + "/" + Game.player.exp_to_next.ToString();
         stoken.text = Game.player.s_tokens.ToString();

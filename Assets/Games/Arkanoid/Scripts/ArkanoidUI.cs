@@ -22,7 +22,7 @@ public class ArkanoidUI : MonoBehaviour
 
     void Start ()
     {
-        curLives = GameInfo.saveLives;
+        curLives = 4;
         pressKey.SetActive(false);
         winLose.gameObject.SetActive(false);
         result.gameObject.SetActive(false);
