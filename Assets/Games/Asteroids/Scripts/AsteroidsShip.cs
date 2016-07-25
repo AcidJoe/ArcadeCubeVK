@@ -19,8 +19,11 @@ public class AsteroidsShip : MonoBehaviour
 
     public bool outOfLife;
 
+    AstroSounds sound;
+
     void Start()
     {
+        sound = FindObjectOfType<AstroSounds>();
         outOfLife = false;
         cooldown = 0.0f;
         rb = GetComponent<Rigidbody2D>();
@@ -65,16 +68,18 @@ public class AsteroidsShip : MonoBehaviour
 
     void GameOver()
     {
+        sound.GameOver();
         Destroy(gameObject);
     }
 
     IEnumerator _Crash()
     {
+        sound.Lose();
         rb.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         Ship_collider.enabled = false;
         anim.SetBool("isInvisible", true);
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(2.3f);
         anim.SetBool("isInvisible", false);
         Ship_collider.enabled = true;
     }

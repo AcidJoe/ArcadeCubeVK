@@ -22,10 +22,13 @@ public class PongManager : MonoBehaviour
     public Text result;
     public GameObject pressKey;
 
+    PongSound sound;
+
     bool isReadyToExit;
 
 	void Start ()
     {
+        sound = FindObjectOfType<PongSound>();
         pressKey.SetActive(false);
         winLose.gameObject.SetActive(false);
         result.gameObject.SetActive(false);
@@ -74,10 +77,12 @@ public class PongManager : MonoBehaviour
         if(playerScore > AIscore)
         {
             winLose.text = "ВЫ ПОБЕДИЛИ !";
+            sound.Win();
         }
         else
         {
             winLose.text = "ВЫ ПРОИГРАЛИ !";
+            sound.Lose();
         }
 
         result.text = aiscore.text + " - " + pscore.text;
@@ -106,12 +111,14 @@ public class PongManager : MonoBehaviour
                 dir = -1;
                 AIscore++;
                 goalSettings();
+                sound.Goal(1);
             }
             else if (ball.transform.position.x < -15)
             {
                 dir = 1;
                 playerScore++;
                 goalSettings();
+                sound.Goal(0);
             }
         }
     }

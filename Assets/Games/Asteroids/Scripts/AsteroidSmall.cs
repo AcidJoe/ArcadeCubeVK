@@ -14,8 +14,12 @@ public class AsteroidSmall : MonoBehaviour
 
     public AsteroidsShip playerShip;
 
+    AstroSounds sound;
+
     void Awake()
     {
+        sound = FindObjectOfType<AstroSounds>();
+
         astroMan = FindObjectOfType<AsteroidsManager>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +44,7 @@ public class AsteroidSmall : MonoBehaviour
 
     void Crack()
     {
+        sound._Destroy();
         astroMan.score += DifficultyManager.astroPoints;
         Destroy(gameObject);
     }

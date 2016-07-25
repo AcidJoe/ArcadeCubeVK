@@ -4,6 +4,7 @@ using System.Collections;
 public class Token : MonoBehaviour
 {
     public TestMainMenu menu;
+    public SoundManager s_manager;
 
     public Vector3 origin;
     public Vector3 mousePos;
@@ -13,6 +14,7 @@ public class Token : MonoBehaviour
 
     void Start()
     {
+        s_manager = FindObjectOfType<SoundManager>();
         menu = FindObjectOfType<TestMainMenu>();
         origin = transform.position;
     }
@@ -35,6 +37,7 @@ public class Token : MonoBehaviour
 
     void OnMouseDown()
     {
+        s_manager.CoinTake();
         menu.currentToken = gameObject;
         isActive = true;
     }

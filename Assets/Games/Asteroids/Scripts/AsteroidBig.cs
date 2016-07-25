@@ -21,8 +21,11 @@ public class AsteroidBig : MonoBehaviour
     public GameObject astermid3;
     public GameObject astermid4;
 
+    AstroSounds sound;
+
     void Awake ()
     {
+        sound = FindObjectOfType<AstroSounds>();
         astroMan = FindObjectOfType<AsteroidsManager>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -67,6 +70,7 @@ public class AsteroidBig : MonoBehaviour
 
     void Crack()
     {
+        sound._Destroy();
         astroMan.score += DifficultyManager.astroPoints * 3;
 
         Instantiate(ranAster(), transform.position, Quaternion.identity);

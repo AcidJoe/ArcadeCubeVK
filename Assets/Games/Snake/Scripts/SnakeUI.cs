@@ -6,6 +6,7 @@ public class SnakeUI : MonoBehaviour
 {
     SnakeManager gameManager;
     SocialManager sm;
+    SnakeSound sound;
 
     public Text score;
     public Text diff;
@@ -26,6 +27,7 @@ public class SnakeUI : MonoBehaviour
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<SnakeManager>();
         sm = FindObjectOfType<SocialManager>();
+        sound = FindObjectOfType<SnakeSound>();
     }
 	
 	void Update ()
@@ -44,6 +46,8 @@ public class SnakeUI : MonoBehaviour
 
     public void GameOver()
     {
+        sound.Lose();
+
         if (Game.player.rec_snk < gameManager.score)
         {
             sm._setRecord(gameManager.score);

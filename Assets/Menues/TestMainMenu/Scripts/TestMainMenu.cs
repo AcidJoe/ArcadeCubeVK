@@ -58,6 +58,9 @@ public class TestMainMenu : MonoBehaviour
 
     public SocialManager sm;
 
+    public GameObject lvlUpPanel;
+    public Text lvlUpText;
+
     void Start()
     {
         GameInfo.difficulty = 0;
@@ -70,6 +73,7 @@ public class TestMainMenu : MonoBehaviour
         GameInfo.saveLives = 4;
         GameInfo.extraRound = 0;
 
+        lvlUpPanel.SetActive(false);
         isSet = false;
 
         isBronzeIn = false;
@@ -82,6 +86,7 @@ public class TestMainMenu : MonoBehaviour
 
         Tokens(false);
         currentPanel = mainPanel;
+        mainPanel.SetActive(true);
         backButton.SetActive(false);
         playPanel.SetActive(false);
         aboutPanel.SetActive(false);
@@ -99,6 +104,16 @@ public class TestMainMenu : MonoBehaviour
         _name.text = Game.player._name;
         sm.records(0);
         Application.ExternalCall("CheckFriends");
+
+        if(GameInfo.oldLvl != 0)
+        {
+            if(GameInfo.oldLvl != Game.player.lvl)
+            {
+                lvlUpPanel.SetActive(true);
+                lvlUpText.text = GameInfo.oldLvl.ToString();
+                StartCoroutine(_changeValue());
+            }
+        }
     }
 
     void Update()
@@ -165,6 +180,27 @@ public class TestMainMenu : MonoBehaviour
             silverButtons.SetActive(true);
             goldButtons.SetActive(false);
         }
+    }
+
+    public void RecordLvl()
+    {
+        GameInfo.oldLvl = Game.player.lvl;
+    }
+
+    public void ChangeValue()
+    {
+        lvlUpText.text = Game.player.lvl.ToString();
+    }
+
+    public IEnumerator _changeValue()
+    {
+        yield return new WaitForSeconds(1.3f);
+        ChangeValue();
+    }
+
+    public void Deactivate()
+    {
+        lvlUpPanel.SetActive(false);
     }
 
     public void SetFriends(string s)
@@ -281,6 +317,12 @@ public class TestMainMenu : MonoBehaviour
         }
     }
 
+    public void Share()
+    {
+        string message = "Я достиг " + Game.player.lvl.ToString() + " уровня в игре Arcade Cube(сборник старых игр с автоматов)";
+        Application.ExternalCall("sendwallpost", message);
+    }
+
     public void Order(int i)
     {
         Application.ExternalCall("order", i);
@@ -311,13 +353,13 @@ public class TestMainMenu : MonoBehaviour
     {
         currentAbout += i;
 
-        if (currentAbout > 1)
+        if (currentAbout > 3)
         {
             currentAbout = 0;
         }
         else if (currentAbout < 0)
         {
-            currentAbout = 1;
+            currentAbout = 3;
         }
 
         switch (currentAbout)
@@ -326,6 +368,12 @@ public class TestMainMenu : MonoBehaviour
                 currentAboutName = "Управление";
                 break;
             case 1:
+                currentAboutName = "Жетоны (1/2)";
+                break;
+            case 2:
+                currentAboutName = "Жетоны (2/2)";
+                break;
+            case 3:
                 currentAboutName = "Создатели";
                 break;
         }

@@ -10,14 +10,18 @@ public class Group : MonoBehaviour
     bool leftReady;
     bool RightReady;
 
+    TetrisSound sound;
+
     void Start()
     {
+        sound = FindObjectOfType<TetrisSound>();
         Input.ResetInputAxes();
         leftReady = true;
         RightReady = true;
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
+            sound.Lose();
             TetrisEvents.OnGameOver();
             Destroy(gameObject);
         }
@@ -32,6 +36,7 @@ public class Group : MonoBehaviour
         // Move Left
         if (Input.GetKey(KeyCode.LeftArrow) && leftReady)
         {
+            sound.Rot();
             RightReady = true;
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
@@ -54,6 +59,7 @@ public class Group : MonoBehaviour
         // Move Right
         else if (Input.GetKey(KeyCode.RightArrow) && RightReady)
         {
+            sound.Rot();
             leftReady = true;
             // Modify position
             transform.position += new Vector3(1, 0, 0);
@@ -76,6 +82,7 @@ public class Group : MonoBehaviour
         // Rotate
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !name.Contains("OShape"))
         {
+            sound.Rot();
             transform.Rotate(0, 0, -90);
 
             // See if valid
