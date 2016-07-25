@@ -18,6 +18,7 @@ public class CubeManager : MonoBehaviour
 
     public string gameName;
     public string diffName;
+    string ran_gameName;
 
     public float timer = 0.001f;
     public bool isRandomize;
@@ -40,7 +41,7 @@ public class CubeManager : MonoBehaviour
 
         if (isRandomize)
         {
-            game.text = gameName;
+            game.text = ran_gameName;
             diff.text = diffName;
             fillTimer -= Time.deltaTime;
         }
@@ -49,6 +50,15 @@ public class CubeManager : MonoBehaviour
             game.text = Game.currengGameName;
             diff.text = GameInfo.diffName;
         }
+    }
+
+    void RanGameName()
+    {
+        string[] game_names = { "Арканоид", "Астеройды", "Змейка", "Понг", "Тетрис" };
+
+        int i = Random.Range(0, 4);
+
+        ran_gameName = game_names[i];
     }
 
     void OnEnable()
@@ -129,6 +139,7 @@ public class CubeManager : MonoBehaviour
 
         if (isRandomize)
         {
+            Invoke("RanGameName", timer);
             Invoke("randomGame", timer);
             timer += 0.002f;
         }

@@ -9,6 +9,8 @@ public class ArcanoidManager : MonoBehaviour
     ArkanoidBall ball;
     ArcanoidLevelManager lm;
 
+    SocialManager sm;
+
     public GameObject[] bricks;
 
     public float defaultSpeed;
@@ -24,6 +26,7 @@ public class ArcanoidManager : MonoBehaviour
         defaultSpeed = DifficultyManager.arkspeed;
         points = DifficultyManager.arkpoints;
         ball.speed = defaultSpeed;
+        sm = FindObjectOfType<SocialManager>();
     }
 
     void Update()
@@ -53,6 +56,12 @@ public class ArcanoidManager : MonoBehaviour
         {
             b.transform.position = new Vector3(1000, 1000, -50000);
         }
+
+        if(Game.player.rec_ark < score)
+        {
+            sm._setRecord(score);
+        }
+
         ball.transform.position = Vector3.zero;
         ball.speed = 0;
         ball.isActivate = true;

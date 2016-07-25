@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public static class GameInfo
 {
     public static int difficulty = 0;
-    public static string currentVersion = "v.0.8";
+    public static string currentVersion = "v.0.9";
 
     public static string diffName = "Тест";
 
@@ -17,4 +18,7 @@ public static class GameInfo
     public static bool isPlay = false;
     public static int oldExp;
     public static int oldLvl;
+
+    public static List<string> recordNames = new List<string>();
+    public static List<string> recordValues = new List<string>();
 }

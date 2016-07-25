@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     AsteroidsManager gameManager;
+    SocialManager sm;
 
     public Text score;
     public Text diff;
@@ -29,7 +30,7 @@ public class UIManager : MonoBehaviour
         isReadyToExit = false;
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<AsteroidsManager>();
-        curLives = gameManager.lives;
+        sm = FindObjectOfType<SocialManager>();
     }
 
     void Update()
@@ -79,6 +80,10 @@ public class UIManager : MonoBehaviour
 
     void GameOver()
     {
+        if (Game.player.rec_ast < gameManager.score)
+        {
+            sm._setRecord(gameManager.score);
+        }
         result.text = score.text;
         gameOverPanel.SetActive(true);
         StartCoroutine(delayText());
