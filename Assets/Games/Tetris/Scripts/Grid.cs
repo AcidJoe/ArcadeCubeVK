@@ -6,8 +6,11 @@ public class Grid : MonoBehaviour
     static TetrisManager manager;
     static int multiplier;
 
+    static TetrisSound sound;
+
     void Start()
     {
+        sound = FindObjectOfType<TetrisSound>();
         multiplier = 1;
         manager = FindObjectOfType<TetrisManager>();
     }
@@ -37,6 +40,7 @@ public class Grid : MonoBehaviour
             grid[x, y] = null;
         }
 
+        sound.Line();
         manager.lineCount++;
         manager.score += DifficultyManager.tetrispoints * multiplier;
     }

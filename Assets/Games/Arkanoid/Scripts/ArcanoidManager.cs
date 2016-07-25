@@ -10,6 +10,7 @@ public class ArcanoidManager : MonoBehaviour
     ArcanoidLevelManager lm;
 
     SocialManager sm;
+    ArcanoidSounds sounds;
 
     public GameObject[] bricks;
 
@@ -27,12 +28,15 @@ public class ArcanoidManager : MonoBehaviour
         points = DifficultyManager.arkpoints;
         ball.speed = defaultSpeed;
         sm = FindObjectOfType<SocialManager>();
+        sounds = FindObjectOfType<ArcanoidSounds>();
+        sounds.StartGame();
     }
 
     void Update()
     {
         if (ball.transform.position.y < -10.0f)
         {
+            sounds.Lose();
             lives -= 1;
             ball.isActivate = false;
             ball.speed = defaultSpeed;
@@ -52,6 +56,7 @@ public class ArcanoidManager : MonoBehaviour
 
     public void GameOver()
     {
+        sounds.GameOver();
         foreach(GameObject b in bricks)
         {
             b.transform.position = new Vector3(1000, 1000, -50000);

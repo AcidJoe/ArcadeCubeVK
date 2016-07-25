@@ -19,8 +19,12 @@ public class AsteroidMid : MonoBehaviour
     public GameObject astersm3;
     public GameObject astersm4;
 
+    AstroSounds sound;
+
     void Awake()
     {
+        sound = FindObjectOfType<AstroSounds>();
+
         astroMan = FindObjectOfType<AsteroidsManager>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -64,6 +68,7 @@ public class AsteroidMid : MonoBehaviour
 
     void Crack()
     {
+        sound._Destroy();
         astroMan.score += DifficultyManager.astroPoints * 2;
 
         Instantiate(ranAster(), transform.position, Quaternion.identity);
