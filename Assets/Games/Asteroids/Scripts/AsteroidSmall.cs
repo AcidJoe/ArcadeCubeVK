@@ -8,22 +8,33 @@ public class AsteroidSmall : MonoBehaviour
     Vector2 dir;
 
     float speed;
+    float difficultyMod;
+
+    AsteroidsManager astroMan;
 
     public AsteroidsShip playerShip;
 
+    AstroSounds sound;
+
     void Awake()
     {
+        sound = FindObjectOfType<AstroSounds>();
+
+        astroMan = FindObjectOfType<AsteroidsManager>();
+
         rb = GetComponent<Rigidbody2D>();
 
         dir = new Vector2(transform.position.x, transform.position.y) - new Vector2(Random.Range(-1000, 1000), Random.Range(-1000, 1000));
 
         dir = dir.normalized;
 
+        difficultyMod = DifficultyManager.astroSpeedMod;
+
         playerShip = GameObject.FindGameObjectWithTag("Player").GetComponent<AsteroidsShip>();     
 
         speed = Random.Range(1.2f, 1.5f);
 
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * difficultyMod;
     }
 
     void Update()
@@ -33,6 +44,8 @@ public class AsteroidSmall : MonoBehaviour
 
     void Crack()
     {
+        sound._Destroy();
+        astroMan.score += DifficultyManager.astroPoints;
         Destroy(gameObject);
     }
 
@@ -46,7 +59,7 @@ public class AsteroidSmall : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
-            
+            AsteroidEvent.OnCrash();
         }
     }
 }

@@ -8,6 +8,12 @@ TagManager:
   - Border
   - Ball
   - AI
+  - UI
+  - UIimage
+  - Bullet
+  - Astro
+  - Brick
+  - Tail
   layers:
   - Default
   - TransparentFX

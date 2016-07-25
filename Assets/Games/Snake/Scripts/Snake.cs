@@ -8,12 +8,17 @@ public class Snake : MonoBehaviour
     public float spawnTime;
     public int lenght;
 
+    public SnakeUI ui;
+
+    public bool isStart;
+
+    SnakePoolManager spm;
+
     Queue<GameObject> bits;
 
     Vector3 moveFwd;
     Vector3 prevPos;
     Vector3 nextPos;
-    Quaternion prevRot;
 
     public enum State { up, down, left, right }
 
@@ -23,11 +28,13 @@ public class Snake : MonoBehaviour
 
     void Start ()
     {
-        spawnTime = 0.4f;
+        ui = FindObjectOfType<SnakeUI>();
+        isStart = false;
+        spm = FindObjectOfType<SnakePoolManager>();
+        spawnTime = DifficultyManager.snakespeed;
         lenght = 3;
         bits = new Queue<GameObject>();
         setState(State.right);
-        Invoke("MoveSnake", spawnTime);
     }
 	
 	void Update ()
@@ -73,45 +80,39 @@ public class Snake : MonoBehaviour
         }
     }
 
+    public void startMove()
+    {
+        isStart = true;
+        Invoke("MoveSnake", spawnTime);
+    }
+
     void MoveSnake()
     {
         isChosen = false;
         prevPos = transform.position;
-        prevRot = transform.rotation;
         nextPos = transform.position += moveFwd;
-        if (nextPos.x > 15.0f)
+        if (nextPos.x > 15.0f || nextPos.x < -15.0f 
+            || nextPos.y > 10.0f || nextPos.y < -10.0f)
         {
-            nextPos.x = -15.0f;
-        }
-        if (nextPos.x < -15.0f)
-        {
-            nextPos.x = 15.0f;
-        }
-        if (nextPos.y > 10.0f)
-        {
-            nextPos.y = -10.0f;
-        }
-        if (nextPos.y < -10.0f)
-        {
-            nextPos.y = 10.0f;
+            GameOver();
         }
 
         transform.position = nextPos;
-
         createBit();
+
         Invoke("MoveSnake", spawnTime);
     }
 
 
     void createBit()
     {
-        var newBit = Instantiate(snakeBit, prevPos, prevRot);
-        GameObject bit = newBit as GameObject;
+        GameObject bit = spm.Create(prevPos);
+
         bits.Enqueue(bit);
 
-        if (bits.Count > lenght)
+        if (bits.Count > lenght && bits.Count != 0)
         {
-            Destroy(bits.Dequeue());
+            spm.Push(bits.Dequeue());
         }
     }
 
@@ -133,5 +134,19 @@ public class Snake : MonoBehaviour
                 break;
         }
         currentState = state;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Tail")
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        spawnTime *= 0;
+        ui.GameOver();
     }
 }

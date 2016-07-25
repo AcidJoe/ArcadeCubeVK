@@ -8,17 +8,73 @@ public class SnakeManager : MonoBehaviour
 
     public GameObject snakeFood;
 
+    SnakePoolManager spm;
+    Snake snake;
+
+    public int score;
+
+    public int collectedFood;
+
+    public ColorElement[] colorElements;
+
     void Start ()
     {
+        collectedFood = 0;
+        spm = FindObjectOfType<SnakePoolManager>();
+        snake = FindObjectOfType<Snake>();
         food = new List<SnakeFood>();
     }
 	
 	void Update ()
     {
+        colorElements = FindObjectsOfType<ColorElement>();
+
+        if (spm.isReady && !snake.isStart)
+        {
+            snake.startMove();
+        }
         if (food.Count < 1)
         {
             SpawnFood(foodSpawnPoint());
         }
+
+        if(collectedFood >= 10)
+        {
+            LevelUp();
+        }
+    }
+
+    void LevelUp()
+    {
+        if (GameInfo.difficulty < 6)
+        {
+            EventManager.OnGameEnd();
+            GameInfo.difficulty++;
+            DifficultyManager.Settings();
+            DifficultyManager.SetDiffName();
+            EventManager.OnStartGame();
+
+            foreach (ColorElement c in colorElements)
+            {
+                c.isPainted = false;
+                c.Repaint();
+            }
+        }
+
+        else
+        {
+            EventManager.OnGameEnd();
+            GameInfo.extraRound++;
+            DifficultyManager.ExtraSettings();
+            EventManager.OnStartGame();
+        }
+
+        snake.spawnTime = DifficultyManager.snakespeed;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            snake.spawnTime /= 3;
+        }
+        collectedFood = 0;
     }
 
     void SpawnFood(Vector2 v)

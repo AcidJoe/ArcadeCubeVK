@@ -4,6 +4,7 @@ using System.Collections;
 public class ArkanoidBall : MonoBehaviour
 {
     Rigidbody2D rb;
+    ArcanoidSounds sound;
 
     public bool isActivate;
 
@@ -18,6 +19,7 @@ public class ArkanoidBall : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         pos = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
+        sound = FindObjectOfType<ArcanoidSounds>();
 
         isActivate = false;
     }
@@ -53,6 +55,7 @@ public class ArkanoidBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        sound.Bounce();
         // Hit the Racket?
         if (col.gameObject.tag == "Player")
         {
@@ -66,6 +69,7 @@ public class ArkanoidBall : MonoBehaviour
 
             // Set Velocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * speed;
+            speed += 0.5f;
         }
     }
 }

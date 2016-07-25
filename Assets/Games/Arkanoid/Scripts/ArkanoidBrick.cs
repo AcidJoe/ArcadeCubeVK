@@ -3,15 +3,20 @@ using System.Collections;
 
 public class ArkanoidBrick : MonoBehaviour
 {
+    ArcanoidManager gameManager;
+
     public int hitsToKill;
     public int points;
+    public int pointsForHit;
     private int numberOfHits;
 
     public GameObject oneHitDetector;
 
     void Start()
     {
-        points = 10;
+        gameManager = FindObjectOfType<ArcanoidManager>();
+        points = gameManager.points;
+        pointsForHit = gameManager.points - 1;
         oneHitDetector.SetActive(false);
         numberOfHits = 0;
     }
@@ -28,6 +33,7 @@ public class ArkanoidBrick : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
+            gameManager.score += pointsForHit;
             numberOfHits++;
 
             if (numberOfHits == hitsToKill)
@@ -40,6 +46,7 @@ public class ArkanoidBrick : MonoBehaviour
 
     IEnumerator _Destroy()
     {
+        gameManager.score += points;
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }

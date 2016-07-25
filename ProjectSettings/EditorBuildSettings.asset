@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Menues/TestMenu/Scenes/TestMenu.unity
+    path: Assets/Menues/TestMainMenu/Scenes/TestIntro.unity
   - enabled: 1
     path: Assets/Games/Arkanoid/Scenes/ArkanoidGame.unity
   - enabled: 1
@@ -17,3 +17,9 @@ EditorBuildSettings:
     path: Assets/Games/Snake/Scenes/SnakeGame.unity
   - enabled: 1
     path: Assets/Games/Tetris/Scenes/TetrisGame.unity
+  - enabled: 1
+    path: Assets/Menues/TestMainMenu/Scenes/TestMainMenu.unity
+  - enabled: 1
+    path: Assets/Menues/TestMainMenu/Scenes/Tutorial.unity
+  - enabled: 0
+    path: Assets/Menues/TestMenu/Scenes/TestMenu.unity

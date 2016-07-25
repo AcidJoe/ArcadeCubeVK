@@ -9,8 +9,9 @@ public class ArcanoidLevelManager : MonoBehaviour
     int[,] levelMap;
 
     public GameObject brick;
+    public GameObject weekBrick;
 
-    bool isLevelCreated;
+    public bool isLevelCreated;
 
 	void Start ()
     {
@@ -30,7 +31,7 @@ public class ArcanoidLevelManager : MonoBehaviour
 
     void CreateLevel()
     {
-        int ran = Random.Range(1, 1);
+        int ran = Random.Range(1, 5);
 
         levelMap = map.map(ran);
 
@@ -39,6 +40,21 @@ public class ArcanoidLevelManager : MonoBehaviour
             for (int j = 0; j <= 14; j++)
             {
                 if (levelMap[i, j] == 1)
+                {
+                    foreach (ArkCell ac in grid.cells)
+                    {
+                        if (ac.row == i && ac.rowPos == j)
+                        {
+                            Instantiate(weekBrick, ac.pos, Quaternion.identity);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                else if (levelMap[i, j] == 2)
                 {
                     foreach (ArkCell ac in grid.cells)
                     {

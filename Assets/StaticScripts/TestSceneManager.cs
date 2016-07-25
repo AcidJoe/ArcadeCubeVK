@@ -17,8 +17,30 @@ public class TestSceneManager : MonoBehaviour
         }
 	}
 
-    void BackToMenu()
+    public static void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(6);
+    }
+
+    public void LoadLevel()
+    {
+        EventManager.OnStartGame();
+        if (Game.isReady)
+        {
+            StartCoroutine(setVars());
+        }
+    }
+
+    public static void LoadScene(int sc)
+    {
+        SceneManager.LoadScene(sc);
+    }
+
+    public IEnumerator setVars()
+    {
+        Randomizer.SetToDiffMan();
+        DifficultyManager.Settings();
+        yield return new WaitForSeconds(0.4f);
+        SceneManager.LoadScene(Game.currentGame);
     }
 }

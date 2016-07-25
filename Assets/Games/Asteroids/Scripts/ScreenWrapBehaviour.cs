@@ -48,9 +48,9 @@ public class ScreenWrapBehaviour : MonoBehaviour
 		var screenTopRight = cam.ViewportToWorldPoint(new Vector3(1, 1, transform.position.z));
 		
 		// The width is then equal to difference between the rightmost and leftmost x-coordinates
-		screenWidth = screenTopRight.x - screenBottomLeft.x;
+		screenWidth = (screenTopRight.x - 50) - (screenBottomLeft.x + 50);
 		// The height, similar to above is the difference between the topmost and the bottom yycoordinates
-		screenHeight = screenTopRight.y - screenBottomLeft.y;
+		screenHeight = (screenTopRight.y - 20) - (screenBottomLeft.y + 20);
 		
 		if(advancedWrapping)
 		{	

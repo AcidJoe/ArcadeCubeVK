@@ -7,8 +7,11 @@ public class PongBall : MonoBehaviour
 
     public float speed;
 
+    PongSound sound;
+
     void Start()
     {
+        sound = FindObjectOfType<PongSound>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,6 +34,8 @@ public class PongBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        sound.Bounce();
+
         // Hit the Racket?
         if (col.gameObject.tag == "Player")
         {

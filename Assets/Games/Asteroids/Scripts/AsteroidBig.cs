@@ -10,6 +10,9 @@ public class AsteroidBig : MonoBehaviour
     public AsteroidsShip playerShip;
 
     float speed;
+    float difficultyMod;
+
+    AsteroidsManager astroMan;
 
     public Transform player;
 
@@ -18,20 +21,27 @@ public class AsteroidBig : MonoBehaviour
     public GameObject astermid3;
     public GameObject astermid4;
 
+    AstroSounds sound;
+
     void Awake ()
     {
+        sound = FindObjectOfType<AstroSounds>();
+        astroMan = FindObjectOfType<AsteroidsManager>();
+
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
+        difficultyMod = DifficultyManager.astroSpeedMod;
+
         playerShip = player.GetComponent<AsteroidsShip>();
 
-        dir = new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-12,12), player.position.y + Random.Range(-12, 12));
+        dir = -new Vector2 (transform.position.x, transform.position.y) - new Vector2(player.position.x + Random.Range(-4,4), player.position.y + Random.Range(-4, 4));
 
         dir = dir.normalized;
 
         speed = Random.Range(0.7f, 1.0f);
 
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * difficultyMod;
 	}
 	
 	void Update ()
@@ -60,6 +70,9 @@ public class AsteroidBig : MonoBehaviour
 
     void Crack()
     {
+        sound._Destroy();
+        astroMan.score += DifficultyManager.astroPoints * 3;
+
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);
         Instantiate(ranAster(), transform.position, Quaternion.identity);
@@ -77,7 +90,7 @@ public class AsteroidBig : MonoBehaviour
 
         if(col.gameObject.tag == "Player")
         {
-            
+            AsteroidEvent.OnCrash();
         }
     }
 }
