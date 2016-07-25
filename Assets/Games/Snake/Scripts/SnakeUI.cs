@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SnakeUI : MonoBehaviour
 {
     SnakeManager gameManager;
+    SocialManager sm;
 
     public Text score;
     public Text diff;
@@ -24,7 +25,8 @@ public class SnakeUI : MonoBehaviour
         isReadyToExit = false;
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<SnakeManager>();
-	}
+        sm = FindObjectOfType<SocialManager>();
+    }
 	
 	void Update ()
     {
@@ -42,6 +44,10 @@ public class SnakeUI : MonoBehaviour
 
     public void GameOver()
     {
+        if (Game.player.rec_snk < gameManager.score)
+        {
+            sm._setRecord(gameManager.score);
+        }
         result.text = score.text;
         gameOverPanel.SetActive(true);
         StartCoroutine(delayText());

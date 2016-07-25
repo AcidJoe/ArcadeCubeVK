@@ -5,13 +5,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     AsteroidsManager gameManager;
+    SocialManager sm;
 
     public Text score;
     public Text diff;
-
-    //Это для тестов
-    public Text info;
-    //----------------
 
     public int curLives;
 
@@ -33,14 +30,13 @@ public class UIManager : MonoBehaviour
         isReadyToExit = false;
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<AsteroidsManager>();
+        sm = FindObjectOfType<SocialManager>();
     }
 
     void Update()
     {
         score.text = currentScore(gameManager.score);
         diff.text = GameInfo.diffName;
-
-        info.text = "Astro.count = " + gameManager.astros.Length.ToString();
 
         if (curLives != gameManager.lives)
         {
@@ -84,6 +80,10 @@ public class UIManager : MonoBehaviour
 
     void GameOver()
     {
+        if (Game.player.rec_ast < gameManager.score)
+        {
+            sm._setRecord(gameManager.score);
+        }
         result.text = score.text;
         gameOverPanel.SetActive(true);
         StartCoroutine(delayText());

@@ -31,7 +31,7 @@ public class ArcanoidLevelManager : MonoBehaviour
 
     void CreateLevel()
     {
-        int ran = Random.Range(1, 1);
+        int ran = Random.Range(1, 5);
 
         levelMap = map.map(ran);
 

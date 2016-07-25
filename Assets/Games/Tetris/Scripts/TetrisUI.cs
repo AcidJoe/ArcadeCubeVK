@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class TetrisUI : MonoBehaviour
 {
     TetrisManager gameManager;
+    SocialManager sm;
 
     public Text score;
     public Text diff;
@@ -29,6 +30,7 @@ public class TetrisUI : MonoBehaviour
         gameOverPanel.SetActive(false);
         gameManager = FindObjectOfType<TetrisManager>();
         spawner = FindObjectOfType<Spawner_Tetris>();
+        sm = FindObjectOfType<SocialManager>();
     }
 
     void Update()
@@ -80,6 +82,10 @@ public class TetrisUI : MonoBehaviour
 
     void GameOver()
     {
+        if (Game.player.rec_tet < gameManager.score)
+        {
+            sm._setRecord(gameManager.score);
+        }
         result.text = score.text;
         gameOverPanel.SetActive(true);
         StartCoroutine(delayText());

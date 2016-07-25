@@ -98,6 +98,7 @@ public class Group : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Space))
         {
+            falltime *= 0;    
             fallDefault *= 0;
         }
 
@@ -202,14 +203,14 @@ public class Group : MonoBehaviour
     IEnumerator leftMove()
     {
         leftReady = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         leftReady = true;
     }
 
     IEnumerator rightMove()
     {
         RightReady = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         RightReady = true;
     }
 }

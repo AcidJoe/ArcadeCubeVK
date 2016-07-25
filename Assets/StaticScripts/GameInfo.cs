@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public static class GameInfo
 {
@@ -17,4 +18,7 @@ public static class GameInfo
     public static bool isPlay = false;
     public static int oldExp;
     public static int oldLvl;
+
+    public static List<string> recordNames = new List<string>();
+    public static List<string> recordValues = new List<string>();
 }
