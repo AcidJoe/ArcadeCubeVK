@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public static class GameInfo
 {
     public static int difficulty = 0;
-    public static string currentVersion = "v.0.8";
+    public static string currentVersion = "v.0.9";
 
     public static string diffName = "Тест";
 
